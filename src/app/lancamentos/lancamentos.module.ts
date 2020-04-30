@@ -1,0 +1,50 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { TooltipModule } from 'primeng/tooltip';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { CalendarModule } from 'primeng/calendar';
+import { InputTextModule } from 'primeng/inputtext';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { SelectButtonModule } from 'primeng/selectbutton';
+
+import { SharedModule } from './../shared/shared.module';
+import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
+import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
+import { LancamentosRoutingModule } from './lancamentos-routing.module';
+
+
+@NgModule({
+  declarations: [
+    LancamentoCadastroComponent,
+    LancamentosPesquisaComponent
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+
+    SelectButtonModule,
+    InputTextModule,
+    ButtonModule,
+    TableModule,
+    TooltipModule,
+    DropdownModule,
+    InputTextareaModule,
+    CalendarModule,
+    SelectButtonModule,
+    CurrencyMaskModule,
+
+    SharedModule,
+
+    LancamentosRoutingModule
+  ],
+  exports: [
+   // LancamentoCadastroComponent,  NAO PRECISAMOS MAIS EXPORTAR, pois agora o roteador cuida disso, não chamamos mais o componente <app-lancamentos-component> no app-component
+    //LancamentosPesquisaComponent
+  ]
+})
+export class LancamentosModule { }

@@ -1,0 +1,20 @@
+.col-acoes {
+  text-align: center;
+  width: 90px;
+}
+
+.col-pequena-header {
+  width: 120px;
+}
+
+.col-media-header {
+  width: 250px;
+}
+
+.col-acoes {
+  text-align: center;
+}
+
+.espaco-icones {
+  margin: 0 .25em!important;
+}
