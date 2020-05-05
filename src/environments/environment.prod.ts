@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:8080',
-  apiUrlSemHttp: 'localhost:8080'
+  apiUrl: 'https://result-angular.herokuapp.com',
+  apiUrlSemHttp: 'result-angular.herokuapp.com'
   //apiUrl: 'https://resultapp.herokuapp.com'
 };
