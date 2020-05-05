@@ -31,8 +31,8 @@ export function tokenGetter(): string {
       config: {
 
         tokenGetter: tokenGetter, //Pega do metodo la em cima que pega do localStorage
-        whitelistedDomains: [environment.apiUrlSemHttp],
-        blacklistedRoutes: [`${environment.apiUrl}/oauth/token`]
+        whitelistedDomains: ['result-app.herokuapp.com'],
+        blacklistedRoutes: ['https://result-app.herokuapp.com/oauth/token']
 
       }
     }),
