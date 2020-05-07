@@ -120,6 +120,7 @@ export class AuthService {
 
     console.log('isAccessTokenInvalido')  ;
     console.log(token);
+    console.log(this.jwtHelper.getTokenExpirationDate());
     console.log(this.jwtHelper.isTokenExpired(token));
 
     return !token || this.jwtHelper.isTokenExpired(token);
