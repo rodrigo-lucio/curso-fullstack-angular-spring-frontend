@@ -28,17 +28,17 @@ export class AuthGuard implements CanActivate {
 
       if (this.auth.isAccessTokenInvalido()) {
 
-   //  AQUI   console.log('Navegação com acess token inválido, obtendo novo token...');
+        console.log('Navegação com acess token inválido, obtendo novo token...');
 
         return this.auth.obterNovoAccessToken()
         .then(() => {
 
-  //  AQUI      if (this.auth.isAccessTokenInvalido()) {          //Casos que o refresh token expirar
- //   AQUI        this.router.navigate(['/login']);
-  //  AQUI        throw new SessaoExpiradaException();
+          if (this.auth.isAccessTokenInvalido()) {          //Casos que o refresh token expirar
+            this.router.navigate(['/login']);
+            throw new SessaoExpiradaException();
 
-  // AQUI         return false;
-  //  AQUI      }
+            return false;
+          }
 
           return true;
 
