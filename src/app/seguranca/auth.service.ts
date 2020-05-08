@@ -39,7 +39,7 @@ export class AuthService {
     .append('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==')
     .append('Content-Type', 'application/x-www-form-urlencoded');
     const body = `username=${usuario}&password=${senha}&grant_type=password`;
-    console.log('VAI DAR POST');
+
     //, withCredentials: true = para enviar o cookie em resquisições de origens diferentes, se for a mesma nao precisa
     return this.http.post(this.oauthTokenUrl, body, { headers, withCredentials: true })
     .toPromise()
@@ -51,7 +51,7 @@ export class AuthService {
     })
     .catch(response => {
       const responseError = response.error;
-      console.log('DEU PAU');
+
       if (response.status === 400) {
         if (responseError.error === 'invalid_grant') {
           return Promise.reject('Usuário ou senha inválida.');
@@ -118,11 +118,7 @@ export class AuthService {
   isAccessTokenInvalido(){
     const token = localStorage.getItem('token');
 
-    console.log('isAccessTokenInvalido')  ;
-    console.log(token);
-    console.log(this.jwtHelper.getTokenExpirationDate());
-    console.log(this.jwtHelper.isTokenExpired(token));
-
+                      //da problema no heroku - delay
     return !token || this.jwtHelper.isTokenExpired(token);
   }
 
