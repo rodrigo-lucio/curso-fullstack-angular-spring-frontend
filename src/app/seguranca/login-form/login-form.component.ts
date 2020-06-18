@@ -13,10 +13,10 @@ import { AuthService } from './../auth.service';
 export class LoginFormComponent implements OnInit {
 
   constructor(private route: Router,
-             private titulo: Title,
-             private authService: AuthService,
-             private errorHandle: ErrorHandlerService,
-             private router: Router) { }
+              private titulo: Title,
+              private authService: AuthService,
+              private errorHandle: ErrorHandlerService,
+              private router: Router) { }
 
   ngOnInit() {
     this.titulo.setTitle('Result App');
@@ -26,7 +26,7 @@ export class LoginFormComponent implements OnInit {
 
     this.authService.login(usuario, senha)
     .then(() => {
-        this.router.navigate(['/lancamentos']);
+        this.router.navigate(['/dashboard']);
     })
     .catch(erro => {
         this.errorHandle.handle(erro);

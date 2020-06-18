@@ -8,20 +8,20 @@ import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos
 const rotas: Routes = [
   {
 
-    path: 'lancamentos',
+    path: '',
     component: LancamentosPesquisaComponent,
     //Parametro para guardião de rotas e role do JWT
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_PESQUISAR_LANCAMENTO']}
   },
   {
-    path: 'lancamentos/novo',
+    path: 'novo',
     component: LancamentoCadastroComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_CADASTRAR_LANCAMENTO']}
   },
   {
-    path: 'lancamentos/:codigo',
+    path: ':codigo',
     component: LancamentoCadastroComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_CADASTRAR_LANCAMENTO']}

@@ -8,21 +8,21 @@ import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.compo
 
 const rotas: Routes = [
   {
-    path: 'pessoas',
+    path: '',
     component: PessoasPesquisaComponent,
     //Parametro para guardião de rotas e role do JWT
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_PESQUISAR_PESSOA']}
   },
   {
-    path: 'pessoas/novo',
+    path: 'novo',
     component: PessoaCadastroComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_CADASTRAR_PESSOA']}
   },
 
   {
-    path: 'pessoas/:codigo',
+    path: ':codigo',
     component: PessoaCadastroComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_CADASTRAR_PESSOA']}

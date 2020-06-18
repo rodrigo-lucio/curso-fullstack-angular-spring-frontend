@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
@@ -11,6 +11,8 @@ import { CalendarModule } from 'primeng/calendar';
 import { InputTextModule } from 'primeng/inputtext';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { FileUploadModule } from 'primeng/fileupload';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 import { SharedModule } from './../shared/shared.module';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
@@ -26,6 +28,7 @@ import { LancamentosRoutingModule } from './lancamentos-routing.module';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
 
     SelectButtonModule,
     InputTextModule,
@@ -37,6 +40,8 @@ import { LancamentosRoutingModule } from './lancamentos-routing.module';
     CalendarModule,
     SelectButtonModule,
     CurrencyMaskModule,
+    FileUploadModule,
+    ProgressSpinnerModule,
 
     SharedModule,
 

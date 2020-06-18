@@ -66,14 +66,24 @@
         <app-message [control]="estado" error="required" text="Informe o estado"></app-message>
       </div>
 
+
+      <div class="ui-g-12">
+
+        <p-panel header="Contatos">
+
+          <app-pessoa-cadastro-contato [contatos]="pessoa.contatos"></app-pessoa-cadastro-contato>
+
+        </p-panel>
+      </div>
+
       <div class="ui-g-12">
         <button pButton type="submit" label="Salvar" [disabled]="pessoaForm.invalid"></button>
         <a routerLink="/pessoas">Voltar para a pesquisa</a>
-    </div>
+      </div>
 
     </div>
 
   </form>
 
-
 </div>
+

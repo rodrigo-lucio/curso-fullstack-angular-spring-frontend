@@ -11,17 +11,20 @@ import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputMaskModule } from 'primeng/inputmask';
+import { DialogModule } from 'primeng/dialog';
 
 import { SharedModule } from './../shared/shared.module';
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { FormsModule } from '@angular/forms';
-
+import { PanelModule } from 'primeng/panel';
+import { PessoaCadastroContatoComponent } from './pessoa-cadastro-contato/pessoa-cadastro-contato.component';
 
 @NgModule({
   declarations: [
     PessoaCadastroComponent,
-    PessoasPesquisaComponent
+    PessoasPesquisaComponent,
+    PessoaCadastroContatoComponent
   ],
   exports: [
   //  PessoaCadastroComponent, NAO PRECISAMOS MAIS EXPORTAR, pois agora o roteador cuida disso, não chamamos mais o componente <app-pessoas-component> no app-component
@@ -40,6 +43,8 @@ import { FormsModule } from '@angular/forms';
     CalendarModule,
     SelectButtonModule,
     InputMaskModule,
+    PanelModule,
+    DialogModule,
 
     SharedModule,
 

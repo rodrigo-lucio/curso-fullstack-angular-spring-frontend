@@ -31,10 +31,12 @@ export function tokenGetter(): string {
       config: {
 
         tokenGetter: tokenGetter, //Pega do metodo la em cima que pega do localStorage
-       whitelistedDomains: ['result-app.herokuapp.com'],
+        /* DESCOMENTAR AQUI PARA PRODUÇÃO
+        whitelistedDomains: ['result-app.herokuapp.com'],
         blacklistedRoutes: ['https://result-app.herokuapp.com/oauth/token']
-       // whitelistedDomains: ['localhost:8080'],
-        //blacklistedRoutes: ['http://localhost:8080/oauth/token']
+        */
+         whitelistedDomains: ['localhost:8080'],
+         blacklistedRoutes: ['http://localhost:8080/oauth/token']
 
       }
     }),

@@ -118,5 +118,8 @@ constructor(private http: HttpClient) {
     }
   }
 
+  urlUploadAnexo(): string {
+    return `${this.lancamentosUrl}/anexo`;
+  }
 
 }

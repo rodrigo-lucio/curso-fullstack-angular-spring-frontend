@@ -1,4 +1,4 @@
-import { NgForm } from '@angular/forms';
+import { NgForm, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
@@ -7,7 +7,7 @@ import { ToastyService } from 'ng2-toasty';
 
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { PessoaService } from './../pessoa.service';
-import { Pessoa } from 'src/app/core/model';
+import { Pessoa, Contato } from 'src/app/core/model';
 
 
 @Component({
@@ -18,6 +18,7 @@ import { Pessoa } from 'src/app/core/model';
 export class PessoaCadastroComponent implements OnInit {
 
   pessoa = new Pessoa();
+
 
   listaUf = [
         {label: 'Acre', value: 'AC'},
@@ -115,6 +116,7 @@ export class PessoaCadastroComponent implements OnInit {
   carregarPessoa(codigo: number){
     this.pessoaservice.buscaPorCodigo(codigo)
     .then(pessoa => {
+      console.log(pessoa);
       this.pessoa = pessoa;
       this.atualizarTituloPessoa();
     });

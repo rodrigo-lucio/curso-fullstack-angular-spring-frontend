@@ -14,6 +14,8 @@ import { LancamentoService } from './../lancamentos/lancamento.service';
 import { PessoaService } from './../pessoas/pessoa.service';
 import { AuthService } from './../seguranca/auth.service';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
+import { DashboardService } from './../dashboard/dashboard.service';
+import { RelatoriosService } from './../relatorios/relatorios.service';
 
 @NgModule({
   declarations: [NavbarComponent, PaginaNaoEncontradaComponent, NaoAutorizadoComponent],
@@ -34,6 +36,8 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component'
     ErrorHandlerService,
     LancamentoService,
     PessoaService,
+    DashboardService,
+    RelatoriosService,
     ConfirmationService,
     Title,
     AuthService,
