@@ -1,4 +1,4 @@
-import { FormControl } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Contato } from './../../core/model';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -26,7 +26,7 @@ export class PessoaCadastroContatoComponent implements OnInit {
     this.contatoIndex = this.contatos.length;
   }
 
-  confirmarContato(frm: FormControl) {
+  confirmarContato(frm: NgForm) {
     this.contatos[this.contatoIndex] = this.clonarContato(this.contato);
     this.exibindoFormularioCadastro = false;
     frm.reset();
