@@ -1,5 +1,7 @@
+import { ButtonModule } from 'primeng/button';
 import { PanelModule } from 'primeng/panel';
 import { ChartModule } from 'primeng/chart';
+import { DropdownModule } from 'primeng/dropdown';
 import { NgModule } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { SharedModule } from './../shared/shared.module';
@@ -13,6 +15,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
     PanelModule,
     ChartModule,
+    DropdownModule,
+    ButtonModule,
 
     CommonModule,
     SharedModule,

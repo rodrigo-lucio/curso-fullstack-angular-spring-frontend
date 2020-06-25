@@ -32,12 +32,15 @@ export function tokenGetter(): string {
 
         tokenGetter: tokenGetter, //Pega do metodo la em cima que pega do localStorage
 
+//DESCOMENTAR AQUI PARA PRODUÇÃO
         whitelistedDomains: ['result-app.herokuapp.com'],
         blacklistedRoutes: ['https://result-app.herokuapp.com/oauth/token']
-        /* DESCOMENTAR AQUI PARA PRODUÇÃO
-         whitelistedDomains: ['localhost:8080'],
-         blacklistedRoutes: ['http://localhost:8080/oauth/token']
-*/
+
+/*
+        whitelistedDomains: ['localhost:8080'],
+        blacklistedRoutes: ['http://localhost:8080/oauth/token']
+       */
+
       }
     }),
 

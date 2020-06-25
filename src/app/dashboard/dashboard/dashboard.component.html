@@ -1,12 +1,42 @@
 <div class="container">
   <div class="ui-g">
 
-    <div class="ui-g-12">
-      <h1>Dashboard</h1>
+    <div class="ui-g-12 ui-fluid">
+      <h2>Dashboard</h2>
+      <h5>Mês base: 06/2020</h5>
+    </div>
+
+    <!--
+
+    <div class="ui-g-6 ui-md-3 ui-fluid">
+
+        <label>Mês: </label>
+        <p-dropdown [options]="filtroMeses"
+        name="filtroMeses" ></p-dropdown>
+
     </div>
 
 
-    <div class="ui-g-12 ui-md-6">
+    <div class="ui-g-6 ui-md-3 ui-fluid">
+
+      <label>Ano: </label>
+      <p-dropdown [options]="filtroAnos"
+      name="filtroAnos" ></p-dropdown>
+
+
+
+    </div>
+
+    <div class="ui-g-6 ui-md-3 ui-fluid">
+
+      <button pButton icon="pi pi-refresh" iconPos="left" class="ui-button-info" type="button"
+      (click)="atualizar()"></button>
+
+    </div>
+
+    -->
+
+    <div class="ui-g-12 ui-md-6 ui-fluid">
 
        <p-panel header="Lançamentos por categoria">
 
@@ -16,7 +46,7 @@
 
     </div>
 
-    <div class="ui-g-12 ui-md-6">
+    <div class="ui-g-12 ui-md-6 ui-fluid">
 
        <p-panel header="Lançamentos por dia">
 
@@ -25,6 +55,29 @@
        </p-panel>
 
     </div>
+
+    <div class="ui-g-12 ui-md-6 ui-fluid">
+
+      <p-panel header="Lançamentos por mês">
+
+       <p-chart type="bar" [data]="barChartData"></p-chart>
+
+      </p-panel>
+
+   </div>
+
+   <div class="ui-g-12 ui-md-6 ui-fluid">
+
+    <p-panel header="5 Pessoas com mais despesas">
+
+     <p-chart type="doughnut" [data]="doughnutChartData"></p-chart>
+
+    </p-panel>
+
+ </div>
+
+
+
 
   </div>
 
