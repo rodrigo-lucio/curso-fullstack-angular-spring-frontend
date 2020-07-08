@@ -2,7 +2,7 @@ import { Title } from '@angular/platform-browser';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { Table } from 'primeng/table/table';
-import { ToastyService } from 'ng2-toasty';
+import { MessageService } from 'primeng/api';
 import { LazyLoadEvent, ConfirmationService } from 'primeng/api';
 
 import { PessoaService, PessoaFiltro } from './../pessoa.service';
@@ -22,7 +22,7 @@ pessoas = [];
 @ViewChild('tabela', {static: true}) grid: Table;
 
 constructor(private pessoaService: PessoaService,
-            private toastyService: ToastyService,
+            private messageService: MessageService,
             private confirmationService: ConfirmationService,
             private errorHandler: ErrorHandlerService,
             private titulo: Title ) { }
@@ -62,7 +62,7 @@ aoMudarPagina(evento: LazyLoadEvent) {
       this.pessoaService.excluir(pessoa.codigo)
       .then(() => {
         this.grid.reset();
-        this.toastyService.success('Pessoa excluída com sucesso');
+        this.messageService.add({severity: 'success', detail: 'Pessoa excluída com sucesso'});
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
@@ -71,7 +71,7 @@ aoMudarPagina(evento: LazyLoadEvent) {
     this.pessoaService.alterarStatus(pessoa.codigo, !pessoa.ativo)
     .then(() => {
       this.grid.reset();
-      this.toastyService.success('Pessoa ' + (pessoa.ativo ? 'inativada' : 'ativada') + ' com sucesso');
+      this.messageService.add({severity: 'success', detail: 'Pessoa ' + (pessoa.ativo ? 'inativada' : 'ativada') + ' com sucesso'});
     })
     .catch(erro => this.errorHandler.handle(erro));
 }

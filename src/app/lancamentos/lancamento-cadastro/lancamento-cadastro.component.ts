@@ -3,7 +3,7 @@ import { Component, OnInit, LOCALE_ID } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
-import { ToastyService } from 'ng2-toasty';
+import { MessageService } from 'primeng/api';
 
 import { LancamentoService, LancamentoFiltro } from './../lancamento.service';
 import { Lancamento } from './../../core/model';
@@ -39,7 +39,7 @@ export class LancamentoCadastroComponent implements OnInit {
   constructor(private categoriaService: CategoriaService,
               private pessoaService: PessoaService,
               private lancamentoService: LancamentoService,
-              private toastyService: ToastyService,
+              private messageService: MessageService,
               private errorHandler: ErrorHandlerService,
               private rota: ActivatedRoute,
               private router: Router,
@@ -149,7 +149,7 @@ export class LancamentoCadastroComponent implements OnInit {
   adicionarLancamento() {
       this.lancamentoService.adicionar(this.formulario.value)
       .then(() => {
-        this.toastyService.success('Lançamento adicionado com sucesso.');
+        this.messageService.add({severity: 'success', detail: 'Lançamento adicionado com sucesso.'});
 
         //Substituido pelo de baixo
         //form.reset();
@@ -164,7 +164,7 @@ export class LancamentoCadastroComponent implements OnInit {
     .then((lancamento) => {
 
       this.formulario.patchValue(lancamento);
-      this.toastyService.success('Lançamento alterado com sucesso.');
+      this.messageService.add({severity: 'success', detail: 'Lançamento alterado com sucesso.'});
 
       this.router.navigate(['/lancamentos']);
 
@@ -201,7 +201,8 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   erroUpload(event) {
-    this.toastyService.error('Erro ao tentar enviar anexo');
+    this.messageService.add({severity: 'error', detail: 'Lançamento adicionado com sucesso.'});
+
     this.uploadEmAndamento = false;
   }
 

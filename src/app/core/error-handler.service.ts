@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { SessaoExpiradaException } from './../seguranca/money-http-interceptor';
-import { ToastyService } from 'ng2-toasty';
+import { MessageService } from 'primeng/api';
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpHeaderResponse } from '@angular/common/http';
 
@@ -9,7 +9,7 @@ import { HttpErrorResponse, HttpHeaderResponse } from '@angular/common/http';
 })
 export class ErrorHandlerService {
 
-  constructor(private toasty: ToastyService,
+  constructor(private messageService: MessageService,
               private router: Router) { }
 
   handle(errorResponse: any) {
@@ -50,7 +50,7 @@ export class ErrorHandlerService {
         console.error('Ocorreu um erro', errorResponse);
       }
 
-      this.toasty.error(msg);
+      this.messageService.add({severity: 'error', detail: msg});
 
   }
 }

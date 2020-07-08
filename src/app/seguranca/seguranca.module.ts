@@ -26,20 +26,13 @@ export function tokenGetter(): string {
     PanelModule,
     SharedModule,
 
-    //Coloca automaticamente em TODAS as requisições HTTP o token no cabeçalho
+    // Coloca automaticamente em TODAS as requisições HTTP o token no cabeçalho
     JwtModule.forRoot({
       config: {
 
-        tokenGetter: tokenGetter, //Pega do metodo la em cima que pega do localStorage
-
-//DESCOMENTAR AQUI PARA PRODUÇÃO
-        whitelistedDomains: ['result-app.herokuapp.com'],
-        blacklistedRoutes: ['https://result-app.herokuapp.com/oauth/token']
-
-/*
-        whitelistedDomains: ['localhost:8080'],
-        blacklistedRoutes: ['http://localhost:8080/oauth/token']
-       */
+        tokenGetter, // Executa o primeiro método desta classe
+        whitelistedDomains: environment.tokenWhitelistedDomains,
+        blacklistedRoutes: environment.tokenBlacklistedRoutes
 
       }
     }),
@@ -48,7 +41,7 @@ export function tokenGetter(): string {
   ],
   providers: [
     JwtHelperService,
-    { //Classe interceptadora, que atualiza o token
+    { // Classe interceptadora, que atualiza o token
       provide: HTTP_INTERCEPTORS,
       useClass: MoneyHttpInterceptor,
       multi: true

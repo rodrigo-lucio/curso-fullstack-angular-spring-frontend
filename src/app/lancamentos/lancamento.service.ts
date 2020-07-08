@@ -23,7 +23,7 @@ constructor(private http: HttpClient) {
   this.lancamentosUrl = `${environment.apiUrl}/lancamentos`;
 }
 
-  pesquisar(filtro: LancamentoFiltro): Promise<any> {
+  async pesquisar(filtro: LancamentoFiltro): Promise<any> {
 
     let params = new HttpParams();
 
@@ -42,44 +42,32 @@ constructor(private http: HttpClient) {
     params = params.set('page', filtro.pagina.toString());
     params = params.set('size', filtro.itensPorPagina.toString());
 
-    return this.http.get(`${this.lancamentosUrl}?resumo`, { params })
-      .toPromise()
-      .then(response => {
-
-        const lancamentos = response['content'];
-
-        const resultado = {
-          lancamentos,
-          total: response['totalElements']
-        }
-
-        return resultado;
-
-      });
+    const response = await this.http.get(`${this.lancamentosUrl}?resumo`, { params })
+      .toPromise();
+    const lancamentos = response['content'];
+    const resultado = {
+      lancamentos,
+      total: response['totalElements']
+    };
+    return resultado;
   }
 
-  buscarPorCodigo(codigo: number): Promise<Lancamento> {
-    //Caso queira passar o header para basic
-    //const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+  async buscarPorCodigo(codigo: number): Promise<Lancamento> {
 
-    return this.http.get<Lancamento>(
+    const response = await this.http.get<Lancamento>(
       `${this.lancamentosUrl}/${codigo}`)
-    .toPromise()
-    .then(response => {
-      const lancamento = response;
-
-      this.converterStringsParaDatas([lancamento]);
-
-      return lancamento;
-    });
+      .toPromise();
+    const lancamento = response;
+    this.converterStringsParaDatas([lancamento]);
+    return lancamento;
 
   }
 
-  excluir(codigo: number): Promise<void> {
+  async excluir(codigo: number): Promise<void> {
 
-    return this.http.delete(`${this.lancamentosUrl}/${codigo}`)
-      .toPromise()
-      .then(() => null);
+    await this.http.delete(`${this.lancamentosUrl}/${codigo}`)
+      .toPromise();
+    return null;
 
   }
 
@@ -91,18 +79,14 @@ constructor(private http: HttpClient) {
 
   }
 
-  atualizar(lancamento: Lancamento): Promise<Lancamento> {
+  async atualizar(lancamento: Lancamento): Promise<Lancamento> {
 
-    return this.http.put<Lancamento>(
-      `${this.lancamentosUrl}/${lancamento.codigo}` , lancamento)
-    .toPromise()
-    .then(response => {
-      const lancamentoAlterado = response;
-
-      this.converterStringsParaDatas([lancamentoAlterado]);
-
-      return lancamentoAlterado;
-    });
+    const response = await this.http.put<Lancamento>(
+      `${this.lancamentosUrl}/${lancamento.codigo}`, lancamento)
+      .toPromise();
+    const lancamentoAlterado = response;
+    this.converterStringsParaDatas([lancamentoAlterado]);
+    return lancamentoAlterado;
 
   }
 

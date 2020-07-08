@@ -1,6 +1,7 @@
+const url = 'result-app.herokuapp.com';
 export const environment = {
   production: true,
-  apiUrl: 'https://result-app.herokuapp.com',
-  apiUrlSemHttp: 'result-app.herokuapp.com'
-  //apiUrl: 'https://resultapp.herokuapp.com'
+  apiUrl: `https://${url}`,
+  tokenWhitelistedDomains: [url],
+  tokenBlacklistedRoutes: [`https://${url}/oauth/token`]
 };

@@ -4,9 +4,10 @@ import { mergeMap } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 
-//Classe interceptadora, que antes de chamar qualquer requisição (post, put, get), verifica se o token
-//é invalido e obtem um novo caso for (utilizando o refresh token)
-//Se o refresh token estiver expirado, estoura uma exception, onde no errorhandler direciona para o login
+/* Classe interceptadora, que antes de chamar qualquer requisição (post, put, get), verifica se o token
+ é invalido e obtem um novo caso for (utilizando o refresh token)
+ Se o refresh token estiver expirado, estoura uma exception, onde no errorhandler direciona para o login
+ */
 export class SessaoExpiradaException {}
 
 @Injectable()
@@ -22,7 +23,7 @@ export class MoneyHttpInterceptor implements HttpInterceptor {
               .pipe(
                   mergeMap(() => {
 
-                      if (this.auth.isAccessTokenInvalido()) {        //Casos que o refresh token expirar
+                      if (this.auth.isAccessTokenInvalido()) {        // Casos que o refresh token expirar
                         throw new SessaoExpiradaException();
                       }
 
@@ -31,7 +32,9 @@ export class MoneyHttpInterceptor implements HttpInterceptor {
                               Authorization: `Bearer ${localStorage.getItem('token')}`
                           }
                       });
+
                       return next.handle(req);
+
                   })
               );
         }

@@ -53,19 +53,28 @@
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
-        <label>Cidade:</label>
-        <input pInputText type="text" name="cidade" [(ngModel)]="pessoa.endereco.cidade"
-        ngModel #cidade="ngModel" required>
-        <app-message [control]="cidade" error="required" text="Informe a cidade"></app-message>
-      </div>
-
-      <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Estado:</label>
-        <p-dropdown [options]="listaUf" placeholder="Selecione" [filter]="true" name="estado" [(ngModel)]="pessoa.endereco.estado"
+
+        <p-dropdown [options]="listaUf" placeholder="Selecione" [filter]="true" name="estado"
+        [(ngModel)]="estadoSelecionado"
+        (onChange)="carregarCidades()"
         ngModel #estado="ngModel" required></p-dropdown>
+
         <app-message [control]="estado" error="required" text="Informe o estado"></app-message>
       </div>
 
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Cidade:</label>
+
+        <p-dropdown [options]="listaCidades" placeholder="Selecione" [filter]="true" name="cidade"
+        [(ngModel)]="pessoa.endereco.cidade.codigo"
+        ngModel #cidade="ngModel" required
+        [disabled]="!estadoSelecionado"
+        ></p-dropdown>
+
+        <app-message [control]="cidade" error="required" text="Informe a cidade"></app-message>
+      </div>
 
       <div class="ui-g-12">
 

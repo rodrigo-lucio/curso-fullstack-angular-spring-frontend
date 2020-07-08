@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
-//Guarda de rotas, cuida para que determinados usuarios não acessem rotas não permitidas
+// Guarda de rotas, cuida para que determinados usuarios não acessem rotas não permitidas
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
 
   constructor(private auth: AuthService,
               private router: Router,
-              private erroHandle: ErrorHandlerService){
+              private erroHandle: ErrorHandlerService) {
 
   }
 
@@ -23,8 +23,8 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      //Protege para não entrar nas paginas, para não cair no else de baixo, redireciona para a pagina de
-      //login caso o acess token estiver invalido
+      // Protege para não entrar nas paginas, para não cair no else de baixo, redireciona para a pagina de
+      // login caso o acess token estiver invalido
 
       if (this.auth.isAccessTokenInvalido()) {
 
@@ -33,7 +33,7 @@ export class AuthGuard implements CanActivate {
         return this.auth.obterNovoAccessToken()
         .then(() => {
 
-          if (this.auth.isAccessTokenInvalido()) {          //Casos que o refresh token expirar
+          if (this.auth.isAccessTokenInvalido()) {          // Casos que o refresh token expirar
             this.router.navigate(['/login']);
             throw new SessaoExpiradaException();
 
@@ -48,10 +48,10 @@ export class AuthGuard implements CanActivate {
           return false;
         });
 
-      } else if (next.data.roles && !this.auth.temQualquerPermissao(next.data.roles)){
+      } else if (next.data.roles && !this.auth.temQualquerPermissao(next.data.roles)) {
 
-        //Verifica se a ROLE definida na rota do componente esta dentro do JWT do usuario
-        //Se tiver algo e não tiver permissão, redireciona para outra pagina re retorna false
+        // Verifica se a ROLE definida na rota do componente esta dentro do JWT do usuario
+        // Se tiver algo e não tiver permissão, redireciona para outra pagina re retorna false
 
         this.router.navigate(['/nao-autorizado']);
         return false;

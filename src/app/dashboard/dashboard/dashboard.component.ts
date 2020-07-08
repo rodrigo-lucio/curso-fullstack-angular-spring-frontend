@@ -36,7 +36,7 @@ export class DashboardComponent implements OnInit {
           const valor = dataset.data[tooltipItem.index];
           const label = dataset.label ? (dataset.label + ': ') : '';
 
-          //Ver aqui por que nao formata real BR no grafico de linhas
+          // Ver aqui por que nao formata real BR no grafico de linhas
           return this.decimalPipe.transform(valor, '1.2-2');
         }
       }
@@ -44,7 +44,7 @@ export class DashboardComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.titulo.setTitle('Dashboard - Result Angular')
+    this.titulo.setTitle('Dashboard - Result Angular');
     this.carregarFiltro();
     this.configurarGraficoPizza();
     this.configurarGraficoLinha();
@@ -85,7 +85,7 @@ export class DashboardComponent implements OnInit {
           datasets: [
             {
               data: dados.map(dado => dado.total),
-              backgroundColor: ['#ffe74c', '#ff5964' , '#38618c','#35a7ff',
+              backgroundColor: ['#ffe74c', '#ff5964' , '#38618c', '#35a7ff',
                                   '#D37B99', '#C14846', '#66CC96']
             }
           ]
@@ -148,12 +148,12 @@ export class DashboardComponent implements OnInit {
   private configurarDiasMes() {
     const mesReferencia = new Date();
     mesReferencia.setMonth(mesReferencia.getMonth() + 1);
-    mesReferencia.setDate(0);   //Seta para o ultimo dia do mes corrente e pega a data abaixo
+    mesReferencia.setDate(0);   // Seta para o ultimo dia do mes corrente e pega a data abaixo
     const quantidade = mesReferencia.getDate();
 
     const dias: number[] = [];
 
-    for (let i = 1; i <= quantidade; i ++){
+    for (let i = 1; i <= quantidade; i ++) {
       dias.push(i);
     }
     return dias;
@@ -161,7 +161,7 @@ export class DashboardComponent implements OnInit {
 
   configurarGraficoBarra() {
 
-    let ano = 2020;
+    const ano = 2020;
 
     this.dashboard.lancamentosPorAno(ano)
     .then(dados => {
@@ -172,7 +172,7 @@ export class DashboardComponent implements OnInit {
     const totaisDespesas = dados.filter(dado => dado.tipo === 'DESPESA');
 
     const dataAtual = new Date();
-    let labelMeses = ['Jan.', 'Fev.', 'Mar.', 'Abr.', 'Mai.', 'Jun.', 'Jul.', 'Ago.', 'Set.', 'Out.', 'Nov.', 'Dez'];
+    const labelMeses = ['Jan.', 'Fev.', 'Mar.', 'Abr.', 'Mai.', 'Jun.', 'Jul.', 'Ago.', 'Set.', 'Out.', 'Nov.', 'Dez'];
     /*
 
     if(dataAtual.getFullYear() === ano) {
@@ -201,19 +201,19 @@ export class DashboardComponent implements OnInit {
               data: this.popularMesesZerados(totaisDespesas, ano).map(dado => dado.total)
           }
       ]
-   }
+   };
   });
   }
 
   private popularMesesZerados(dados: any, ano) {
-
+    // Cria uma nova lista com os meses que não possuem registro e atribui valor 0
     let novaLista = [];
 
     const dataAtual = new Date();
 
     for (const mes of this.filtroMeses) {
       let totalNovo = 0;
-      let mesNovo = mes.value;
+      const mesNovo = mes.value;
 
       for (const dado of dados) {
         if (dado.mes === mesNovo) {
@@ -222,16 +222,7 @@ export class DashboardComponent implements OnInit {
         }
       }
 
-     // if(dataAtual.getFullYear() === ano) {
-
-     //   if (mesNovo <= (dataAtual.getMonth() + 1)) {
-   //       novaLista = [...novaLista, {mes: mesNovo, total: totalNovo }];
-    //    }
-
-   //   } else {
-        novaLista = [...novaLista, {mes: mesNovo, total: totalNovo }];
-   //   }
-
+      novaLista = [...novaLista, {mes: mesNovo, total: totalNovo }];
 
     }
 
@@ -241,26 +232,26 @@ export class DashboardComponent implements OnInit {
 
   configurarGraficoDoughnut() {
       this.dashboard.pessoasMaisDevem()
-      .then(dados =>{
+      .then(dados => {
         this.doughnutChartData = {
           labels: dados.map(dado => dado.pessoa.nome),
           datasets: [
               {
                   data: dados.map(dado => dado.total),
                   backgroundColor: [
-                    "#7091CF",
-                    "#C34B74",
-                    "#43C05D",
-                    "#D7A086",
-                    "#9D38A7"
+                    '#7091CF',
+                    '#C34B74',
+                    '#43C05D',
+                    '#D7A086',
+                    '#9D38A7'
 
                   ],
                   hoverBackgroundColor: [
-                    "#7091CF",
-                    "#C34B74",
-                    "#43C05D",
-                    "#D7A086",
-                    "#9D38A7"
+                    '#7091CF',
+                    '#C34B74',
+                    '#43C05D',
+                    '#D7A086',
+                    '#9D38A7'
                   ]
               }]
           };

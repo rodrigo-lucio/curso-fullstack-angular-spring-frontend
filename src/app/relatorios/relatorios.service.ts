@@ -13,18 +13,18 @@ export class RelatoriosService {
     this.lancamentosUrl = `${environment.apiUrl}/lancamentos`;
    }
 
-  relatorioLancamentosPorPessoa(inicio: Date, fim: Date) {
+  async relatorioLancamentosPorPessoa(inicio: Date, fim: Date) {
 
-    //Para declarar os parâmetros
+    // Para declarar os parâmetros
     let params = new HttpParams();
 
     params = params.set('inicio', moment(inicio).format('YYYY-MM-DD'));
     params = params.set('fim', moment(fim).format('YYYY-MM-DD'));
 
-    return this.httpClient.get(`${this.lancamentosUrl}/relatorios/por-pessoa`,
-    { params, responseType: 'blob' })
-    .toPromise()
-    .then(response => response);
+    const response = await this.httpClient.get(`${this.lancamentosUrl}/relatorios/por-pessoa`,
+      { params, responseType: 'blob' })
+      .toPromise();
+    return response;
 
   }
 }

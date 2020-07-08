@@ -13,8 +13,8 @@ export class NavbarComponent implements OnInit {
   exibindoMenu = false;
 
   constructor(public auth: AuthService,
-    private router: Router,
-    private errrorHandle: ErrorHandlerService) { }
+              private router: Router,
+              private errrorHandle: ErrorHandlerService) { }
 
   ngOnInit() {
   }

@@ -9,6 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PessoaCadastroContatoComponent implements OnInit {
 
+  // Pega por parametro
   @Input() contatos: Array<Contato>;
   contato: Contato;
   exibindoFormularioCadastro = false;
