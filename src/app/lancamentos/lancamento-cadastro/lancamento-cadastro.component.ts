@@ -69,7 +69,7 @@ export class LancamentoCadastroComponent implements OnInit {
     this.titulo.setTitle('Edição de lançamento: ' + this.formulario.get('descricao').value);
   }
 
-  //Formulario reativo, para não precisar fazer as validaçoes no HTML
+  // Formulario reativo, para não precisar fazer as validaçoes no HTML
   configurarFormulario() {
 
     this.formulario = this.formBuilder.group({
