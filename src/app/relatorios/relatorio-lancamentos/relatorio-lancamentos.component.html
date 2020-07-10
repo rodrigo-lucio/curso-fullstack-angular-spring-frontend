@@ -1,17 +1,18 @@
 <div class="container">
   <div class ="ui-g">
-    <div class="ui-g-12">
-      <h1>Relatório de lançamentos por pessoa</h1>
+      <div class="ui-g-12">
+        <h1>Relatório de lançamentos por pessoa</h1>
+      </div>
 
       <form #f="ngForm" (ngSubmit)="gerar()">
 
-        <div class="ui-g-12">
+        <div class="ui-g-10 relatorio-filtro">
 
-          <label>Vencimento: </label>
+          <label>Vencimento:</label>
           <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{width: '95px'}" required
           [(ngModel)]="periodoInicio" name="periodoInicio"></p-calendar>
 
-          <label> até: </label>
+          <label>até:</label>
           <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{width: '95px'}" required
           [(ngModel)]="periodoFim" name="periodoFim"></p-calendar>
 
@@ -23,6 +24,6 @@
 
       </form>
 
-    </div>
+
   </div>
 </div>

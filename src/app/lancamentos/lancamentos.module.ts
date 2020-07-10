@@ -9,7 +9,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextModule } from 'primeng/inputtext';
-import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { NgxCurrencyModule } from 'ngx-currency';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
@@ -39,7 +39,7 @@ import { LancamentosRoutingModule } from './lancamentos-routing.module';
     InputTextareaModule,
     CalendarModule,
     SelectButtonModule,
-    CurrencyMaskModule,
+    NgxCurrencyModule,
     FileUploadModule,
     ProgressSpinnerModule,
 

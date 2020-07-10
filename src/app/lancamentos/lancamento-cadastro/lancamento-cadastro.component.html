@@ -107,7 +107,7 @@
           [href]="formulario.get('urlAnexo').value.replace('\\', 'https://')">{{ getNomeAnexo() }}</a>
       </div>
 
-      <div class="ui-g-12">
+      <div class="ui-g-12 cadastro-acoes">
           <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid || uploadEmAndamento"></button>
 
           <a routerLink="/lancamentos">Voltar para a pesquisa</a>
