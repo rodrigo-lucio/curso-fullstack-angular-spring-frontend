@@ -27,8 +27,6 @@ import { PessoaCadastroContatoComponent } from './pessoa-cadastro-contato/pessoa
     PessoaCadastroContatoComponent
   ],
   exports: [
-  //  PessoaCadastroComponent, NAO PRECISAMOS MAIS EXPORTAR, pois agora o roteador cuida disso, não chamamos mais o componente <app-pessoas-component> no app-component
-  //  PessoasPesquisaComponent
   ],
   imports: [
     CommonModule,

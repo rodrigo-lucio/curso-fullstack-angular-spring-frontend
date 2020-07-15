@@ -10,7 +10,7 @@ const rotas: Routes = [
   {
     path: '',
     component: PessoasPesquisaComponent,
-    //Parametro para guardião de rotas e role do JWT
+    // Parametro para guardião de rotas e role do JWT
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_PESQUISAR_PESSOA']}
   },
@@ -31,7 +31,7 @@ const rotas: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forChild(rotas) //usa chield por que não é o modulo app-module
+    RouterModule.forChild(rotas) // usa CHILD por que não é o modulo app-module
   ],
   exports: [RouterModule]
 })

@@ -48,12 +48,11 @@ export class LancamentoCadastroComponent implements OnInit {
 
   ngOnInit() {
 
-
-    //this.urlUploadAnexo = this.getUrlUploadAnexo();
     this.configurarFormulario();
 
     this.titulo.setTitle('Novo lançamento');
-    //Faz o get na URL
+
+    // Faz o get pela URL
     const codigoLancamento = this.rota.snapshot.params['codigo'];
 
     if (codigoLancamento) {
@@ -99,10 +98,9 @@ export class LancamentoCadastroComponent implements OnInit {
     if (input.value) {
       return null;
     } else {
-      return {obrigatoriedade: true }; //utiliza esse nome la no html
+      return {obrigatoriedade: true }; // utiliza esse nome no html
     }
-    //ou com ternario
-   // return (input.value ? null : { obrigatoriedade: true });
+
   }
 
   validarTamanhoMinimo(valor: number) {
@@ -113,8 +111,7 @@ export class LancamentoCadastroComponent implements OnInit {
       } else {
         return {tamanhoMinimo: {tamanho: valor}};
       }
-      //ternario
-      //return (!input.value || input.value.length >= valor) ? null : {tamanhoMinimo: {tamanho: valor}};
+
     };
   }
 
@@ -150,10 +147,6 @@ export class LancamentoCadastroComponent implements OnInit {
       this.lancamentoService.adicionar(this.formulario.value)
       .then(() => {
         this.messageService.add({severity: 'success', detail: 'Lançamento adicionado com sucesso.'});
-
-        //Substituido pelo de baixo
-        //form.reset();
-        //this.lancamento = new Lancamento();
         this.router.navigate(['/lancamentos']);
       })
       .catch(erro => this.errorHandler.handle(erro));

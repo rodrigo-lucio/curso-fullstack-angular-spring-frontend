@@ -12,7 +12,8 @@
         <p-selectButton [options]="tipos" formControlName="tipo"></p-selectButton>
       </div>
 
-      <div class="ui-g-6 ui-md-3 ui-fluid"> <!-- ui-md-3 (Diz para a grid do primeng que quando for resolução media utilize só 3 colunas, e se for menor (smartphone) utiliza 12)-->
+      <!-- ui-md-3 (Diz para a grid do primeng que quando for resolução media utilize só 3 colunas, e se for menor (smartphone) utiliza 12)-->
+      <div class="ui-g-6 ui-md-3 ui-fluid">
 
         <label>Vencimento:</label>
         <p-calendar dateFormat="dd/mm/yy" [readonlyInput]="false" [showIcon]="true"
@@ -36,9 +37,8 @@
         <input pInputText type="text" name="descricao"  formControlName="descricao">
 
         <app-message [control]="formulario.get('descricao')" error="obrigatoriedade" text="Informe uma descrição"></app-message>
-                                                                   <!--?(interrogação é um operador elvis de segurança, ) aqui diz se o errors for nulo para por ai na tag e não continua, se nao colocad da pau-->
         <app-message [control]="formulario.get('descricao')" error="tamanhoMinimo" text="Mínimo de {{ formulario.get('descricao').errors?.tamanhoMinimo?.tamanho  }} caracteres"></app-message>
-
+         <!--?(interrogação é um operador elvis de segurança, usado para acessar um atributo de um objeto, apenas quando o objeto não é nulo.-->
       </div>
 
       <div class="ui-g-12 ui-md-3 ui-fluid">
@@ -105,14 +105,13 @@
           <label>Anexo: </label>
           <a target="_blank" pTooltip="Baixar anexo" tooltipPosition="top"
           [href]="formulario.get('urlAnexo').value.replace('\\', 'https://')">{{ getNomeAnexo() }}</a>
+
       </div>
 
       <div class="ui-g-12 cadastro-acoes">
           <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid || uploadEmAndamento"></button>
-
           <a routerLink="/lancamentos">Voltar para a pesquisa</a>
-        </div>
-
+      </div>
 
     </div>
   </form>

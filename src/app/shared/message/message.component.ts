@@ -18,7 +18,7 @@ import { FormControl } from '@angular/forms';
 })
 export class MessageComponent {
 
-  //Parâmetros do componente mensagem
+  // Parâmetros do componente mensagem passados no HTML
   @Input() error: string;
   @Input() control: FormControl;
   @Input() text: string;

@@ -30,7 +30,7 @@ const rotas: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forChild(rotas) //usa chield por que não é o modulo app-module
+    RouterModule.forChild(rotas) // usa child por que não é o modulo app-module
   ],
   exports: [RouterModule]
 })

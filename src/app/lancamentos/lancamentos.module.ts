@@ -48,8 +48,6 @@ import { LancamentosRoutingModule } from './lancamentos-routing.module';
     LancamentosRoutingModule
   ],
   exports: [
-   // LancamentoCadastroComponent,  NAO PRECISAMOS MAIS EXPORTAR, pois agora o roteador cuida disso, não chamamos mais o componente <app-lancamentos-component> no app-component
-    //LancamentosPesquisaComponent
   ]
 })
 export class LancamentosModule { }

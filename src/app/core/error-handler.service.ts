@@ -24,7 +24,6 @@ export class ErrorHandlerService {
         msg = 'Sessão expirada, realize o login novamente';
         this.router.navigate(['/login']);
 
-      //} else if (errorResponse instanceof Response
       } else if (errorResponse instanceof HttpErrorResponse
         && errorResponse.status >= 400 && errorResponse.status <= 499) {
 
@@ -36,10 +35,10 @@ export class ErrorHandlerService {
           }
 
           try {
-            //errors = errorResponse.json();
-            errors = errorResponse.error.json();
 
+            errors = errorResponse.error.json();
             msg = errors[0].mensagemUsuario;
+
           } catch (e) { }
 
           console.error('Ocorreu um erro', errorResponse);
@@ -48,6 +47,7 @@ export class ErrorHandlerService {
 
         msg = 'Erro ao processar serviço remoto. Tente novamente.';
         console.error('Ocorreu um erro', errorResponse);
+
       }
 
       this.messageService.add({severity: 'error', detail: msg});

@@ -53,7 +53,7 @@ export class DashboardService {
 
   private converterRealBrasileiro(dados: Array<any>){
     for (const dado of dados) {
-     // dado.total = dado.total.toLocaleString('pt-br', {minimumFractionDigits: 2});
+      dado.total = dado.total.toLocaleString('pt-br', {minimumFractionDigits: 2});
     }
   }
 }

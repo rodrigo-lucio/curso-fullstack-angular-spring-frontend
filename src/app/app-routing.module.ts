@@ -13,10 +13,10 @@ const rotas: Routes = [
   { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)},
   { path: 'relatorios', loadChildren: () => import('./relatorios/relatorios.module').then(m => m.RelatoriosModule)},
 
-  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},   // Redireciona para dashboard quando digitar localhost:8080
-  {path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent},
-  {path: 'nao-autorizado', component: NaoAutorizadoComponent},
-  {path: '**', component: PaginaNaoEncontradaComponent} // os ** serve para dizer, qualquer coisa que for diferente ou não foi encontrado nas rotas, cai para pagina nao encontrada
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full'},   // Redireciona para dashboard quando digitar localhost:8080
+  { path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent},
+  { path: 'nao-autorizado', component: NaoAutorizadoComponent},
+  { path: '**', component: PaginaNaoEncontradaComponent}
 ];
 
 

@@ -51,7 +51,7 @@ export class AuthGuard implements CanActivate {
       } else if (next.data.roles && !this.auth.temQualquerPermissao(next.data.roles)) {
 
         // Verifica se a ROLE definida na rota do componente esta dentro do JWT do usuario
-        // Se tiver algo e não tiver permissão, redireciona para outra pagina re retorna false
+        // Se tiver algo e não tiver permissão, redireciona para outra pagina e retorna false
 
         this.router.navigate(['/nao-autorizado']);
         return false;

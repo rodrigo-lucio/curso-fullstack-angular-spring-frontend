@@ -38,7 +38,7 @@ export class PessoaCadastroComponent implements OnInit {
 
     this.carregarEstados();
 
-    //faz o get na url --- /{codigo}
+    // Faz o get na url --- /{codigo}
     const codigoPessoa = this.rota.snapshot.params['codigo'];
 
     if (codigoPessoa) {
@@ -68,14 +68,13 @@ export class PessoaCadastroComponent implements OnInit {
 
   adicionar(form: NgForm) {
     this.pessoaservice.adicionar(this.pessoa)
-    .then(() =>{
+    .then(() => {
 
       this.messageService.add({severity: 'success', detail: 'Pessoa adicionada com sucesso.'});
 
-      //form.reset(); CASO QUEIRA LIMPAR O FORM
-
       this.pessoa = new Pessoa();
       this.router.navigate(['/pessoas']);
+
     })
     .catch(erro => this.errorHandler.handle(erro));
   }
@@ -117,7 +116,6 @@ export class PessoaCadastroComponent implements OnInit {
 
   carregarCidades() {
     this.pessoaservice.pesquisarCidades(this.estadoSelecionado).then(listaCidades => {
-      // Carrega o dropdown
       this.listaCidades = listaCidades.map(cidade => ({label: cidade.nome, value: cidade.codigo}));
   })
   .catch(erro => this.errorHandler.handle(erro));
