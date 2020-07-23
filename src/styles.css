@@ -63,9 +63,5 @@ a.ui-button:hover {
 .relatorio-filtro {
   display: flex;
   justify-content: space-between;
-<<<<<<< HEAD
   align-items: center ;
-=======
-  align-items: center;
->>>>>>> c2d193590d8a17eebcb517c5c1c3d99e7ec6f680
 }
