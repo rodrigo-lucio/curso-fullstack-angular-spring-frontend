@@ -9,7 +9,7 @@ export class LancamentoFiltro {
   dataVencimentoDe: Date;
   dataVencimentoAte: Date;
   pagina = 0;
-  itensPorPagina = 5;
+  itensPorPagina = 7 ;
 }
 
 @Injectable({

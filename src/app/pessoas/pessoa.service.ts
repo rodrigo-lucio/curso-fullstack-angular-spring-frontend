@@ -6,7 +6,7 @@ import { Pessoa, Estado, Cidade } from '../core/model';
 export class PessoaFiltro {
   nome: string;
   pagina = 0;
-  itensPorPagina = 5;
+  itensPorPagina = 8;
 }
 @Injectable({
   providedIn: 'root'

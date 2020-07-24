@@ -25,7 +25,7 @@ export class DashboardService {
     .then(response => {
        const dados = response as Array<any>;
        this.converterStringsParaDatas(dados);
-       this.converterRealBrasileiro(dados);
+       // this.converterRealBrasileiro(dados);
        return dados;
     });
   }
