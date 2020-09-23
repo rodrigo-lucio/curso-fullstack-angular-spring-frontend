@@ -16,62 +16,57 @@
       <div class="ui-g-6 ui-md-3 ui-fluid">
 
         <label>Vencimento:</label>
-        <p-calendar dateFormat="dd/mm/yy" [readonlyInput]="false" [showIcon]="true"
-          name="vencimento"
+        <p-calendar dateFormat="dd/mm/yy" [readonlyInput]="false" [showIcon]="true" name="vencimento"
           formControlName="dataVencimento"></p-calendar>
-        <app-message [control]="formulario.get('dataVencimento')" error="required"
-        text="Informe o vencimento"></app-message>
+        <app-message [control]="formulario.get('dataVencimento')" error="required" text="Informe o vencimento">
+        </app-message>
 
       </div>
 
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label>{{ formulario.get('tipo').value === 'RECEITA' ? 'Recebimento:' : 'Pagamento:' }} </label>
-        <p-calendar dateFormat="dd/mm/yy" [readonlyInput]="false" [showIcon]="true"
-        formControlName="dataPagamento"
-        name="dataPagamento"
-        ></p-calendar>
+        <p-calendar dateFormat="dd/mm/yy" [readonlyInput]="false" [showIcon]="true" formControlName="dataPagamento"
+          name="dataPagamento"></p-calendar>
       </div>
 
       <div class="ui-g-12 ui-md-9 ui-fluid">
         <label>Descrição:</label>
-        <input pInputText type="text" name="descricao"  formControlName="descricao">
+        <input pInputText type="text" name="descricao" formControlName="descricao">
 
-        <app-message [control]="formulario.get('descricao')" error="obrigatoriedade" text="Informe uma descrição"></app-message>
-        <app-message [control]="formulario.get('descricao')" error="tamanhoMinimo" text="Mínimo de {{ formulario.get('descricao').errors?.tamanhoMinimo?.tamanho  }} caracteres"></app-message>
-         <!--?(interrogação é um operador elvis de segurança, usado para acessar um atributo de um objeto, apenas quando o objeto não é nulo.-->
+        <app-message [control]="formulario.get('descricao')" error="obrigatoriedade" text="Informe uma descrição">
+        </app-message>
+        <app-message [control]="formulario.get('descricao')" error="tamanhoMinimo"
+          text="Mínimo de {{ formulario.get('descricao').errors?.tamanhoMinimo?.tamanho  }} caracteres"></app-message>
+        <!--?(interrogação é um operador elvis de segurança, usado para acessar um atributo de um objeto, apenas quando o objeto não é nulo.-->
       </div>
 
       <div class="ui-g-12 ui-md-3 ui-fluid">
         <label>Valor:</label>
 
-         <!-- options foi colocado para trocar para formato real brasileiro -->
-        <input pInputText type="text" placeholder="0,00" name="valor"
-        currencyMask [options]="{prefix: '', thousands: '.', decimal: ',', allowNegative: false}"
-        name="valor"
-        formControlName="valor">
+        <!-- options foi colocado para trocar para formato real brasileiro -->
+        <input pInputText type="text" placeholder="0,00" name="valor" currencyMask
+          [options]="{prefix: '', thousands: '.', decimal: ',', allowNegative: false}" name="valor"
+          formControlName="valor">
         <app-message [control]="formulario.get('valor')" error="required" text="Informe o valor"></app-message>
 
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid" formGroupName="categoria">
 
-          <label>Categoria:</label>
+        <label>Categoria:</label>
 
-          <p-dropdown [options]="categorias" placeholder="Selecione" [filter]="true"
-          name="categoria"
-          formControlName="codigo"
-          ></p-dropdown>
-          <app-message [control]="formulario.get('categoria.codigo')" error="required" text="Informe a categoria"></app-message>
+        <p-dropdown [options]="categorias" placeholder="Selecione" [filter]="true" name="categoria"
+          formControlName="codigo"></p-dropdown>
+        <app-message [control]="formulario.get('categoria.codigo')" error="required" text="Informe a categoria">
+        </app-message>
 
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid" formGroupName="pessoa">
-          <label>Pessoa:</label>
-          <p-dropdown [options]="pessoas" placeholder="Selecione" [filter]="true"
-          name="pessoa"
-          formControlName="codigo"
-          ></p-dropdown>
-         <app-message [control]="formulario.get('pessoa.codigo')" error="required" text="Informe a pessoa"></app-message>
+        <label>Pessoa:</label>
+        <p-dropdown [options]="pessoas" placeholder="Selecione" [filter]="true" name="pessoa" formControlName="codigo">
+        </p-dropdown>
+        <app-message [control]="formulario.get('pessoa.codigo')" error="required" text="Informe a pessoa"></app-message>
       </div>
 
       <div class="ui-g-12 ui-fluid">
@@ -80,37 +75,30 @@
       </div>
 
       <!-- FAZ O UPLOAD SOIZINHO COM O [url]-->
-      <div class="ui-g-6 ui-g-offset-6 ui-md-2 ui-md-offset-10 ui-fluid"
-      *ngIf="!formulario.get('anexo').value">
-        <p-fileUpload name="anexo" mode="basic" auto="true" maxFileSize="100000000"
-        chooseLabel="Anexar" accept="image/*,application/*"
-        [url]="getUrlUploadAnexo()"
-        (onBeforeUpload)="uploadAnexoEmAndamento()"
-        (onUpload)="aoTerminarUploadAnexo($event)"
-        (onError)="erroUpload($event)"
-        [hidden]="uploadEmAndamento"></p-fileUpload>
+      <div class="ui-g-6 ui-g-offset-6 ui-md-2 ui-md-offset-10 ui-fluid" *ngIf="!formulario.get('anexo').value">
+        <p-fileUpload name="anexo" mode="basic" auto="true" maxFileSize="100000000" chooseLabel="Anexar"
+          accept="image/*,application/*" [url]="getUrlUploadAnexo()" (onBeforeUpload)="uploadAnexoEmAndamento()"
+          (onUpload)="aoTerminarUploadAnexo($event)" (onError)="erroUpload($event)" [hidden]="uploadEmAndamento">
+        </p-fileUpload>
 
-        <p-progressSpinner [style]="{ width: '25px', height: '25px'}" [hidden]="!uploadEmAndamento"
-        ></p-progressSpinner>
+        <p-progressSpinner [style]="{ width: '25px', height: '25px'}" [hidden]="!uploadEmAndamento"></p-progressSpinner>
 
       </div>
 
-      <div class="ui-g-12 ui-fluid" dir="rtl"
-       *ngIf="formulario.get('anexo').value">
+      <div class="ui-g-12 ui-fluid" dir="rtl" *ngIf="formulario.get('anexo').value">
 
-          <button pButton icon="pi pi-trash" iconPos="left" class="ui-button-danger" type="button"
-          pTooltip="Remover anexo" tooltipPosition="top"
-          (click)="removerAnexo()"></button>
+        <button pButton icon="pi pi-trash" iconPos="left" class="ui-button-danger" type="button"
+          pTooltip="Remover anexo" tooltipPosition="top" (click)="removerAnexo()"></button>
 
-          <label>Anexo: </label>
-          <a target="_blank" pTooltip="Baixar anexo" tooltipPosition="top"
-          [href]="formulario.get('urlAnexo').value.replace('\\', 'https://')">{{ getNomeAnexo() }}</a>
+        <label>Anexo: </label>
+        <a target="_blank" pTooltip="Baixar anexo" tooltipPosition="top"
+          [href]="formulario.get('urlAnexo').value.replace('\\', '')">{{ getNomeAnexo() }}</a>
 
       </div>
 
       <div class="ui-g-12 cadastro-acoes">
-          <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid || uploadEmAndamento"></button>
-          <a routerLink="/lancamentos">Voltar para a pesquisa</a>
+        <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid || uploadEmAndamento"></button>
+        <a routerLink="/lancamentos">Voltar para a pesquisa</a>
       </div>
 
     </div>

@@ -48,7 +48,7 @@ export class Categoria {
 
 export class Lancamento {
   codigo: number;
-  tipo = 'RECEITA' ;
+  tipo = 'RECEITA';
   descricao: string;
   dataVencimento: Date;
   dataPagamento: Date;
@@ -58,4 +58,19 @@ export class Lancamento {
   categoria = new Categoria();
   anexo: string;
   urlAnexo: string;
+}
+
+export class Usuario {
+  codigo: number;
+  nome: string;
+  email: string;
+  senha: string;
+  ativo: boolean;
+  permissoes = new Array<Permissao>();
+}
+
+export class Permissao {
+  codigo: number;
+  descricao: string;
+  tipoPermissao: number;
 }

@@ -10,47 +10,47 @@ import { HttpErrorResponse, HttpHeaderResponse } from '@angular/common/http';
 export class ErrorHandlerService {
 
   constructor(private messageService: MessageService,
-              private router: Router) { }
+    private router: Router) { }
 
   handle(errorResponse: any) {
-      let msg: string;
+    let msg: string;
 
-      if (typeof errorResponse === 'string') {
+    if (typeof errorResponse === 'string') {
 
-        msg = errorResponse;
+      msg = errorResponse;
 
-      } else if (errorResponse instanceof SessaoExpiradaException) {
+    } else if (errorResponse instanceof SessaoExpiradaException) {
 
-        msg = 'Sessão expirada, realize o login novamente';
-        this.router.navigate(['/login']);
+      msg = 'Sessão expirada, realize o login novamente';
+      this.router.navigate(['/login']);
 
-      } else if (errorResponse instanceof HttpErrorResponse
-        && errorResponse.status >= 400 && errorResponse.status <= 499) {
+    } else if (errorResponse instanceof HttpErrorResponse
+      && errorResponse.status >= 400 && errorResponse.status <= 499) {
 
-          let errors;
-          msg = 'Ocorreu um erro ao processar a sua solicitação';
+      let errors;
+      msg = 'Ocorreu um erro ao processar a sua solicitação';
 
-          if (errorResponse.status === 403 ) {
-            msg = 'Você não tem permissão para executar esta ação';
-          }
-
-          try {
-
-            errors = errorResponse.error.json();
-            msg = errors[0].mensagemUsuario;
-
-          } catch (e) { }
-
-          console.error('Ocorreu um erro', errorResponse);
-
-      } else {
-
-        msg = 'Erro ao processar serviço remoto. Tente novamente.';
-        console.error('Ocorreu um erro', errorResponse);
-
+      if (errorResponse.status === 403) {
+        msg = 'Você não tem permissão para executar esta ação';
       }
 
-      this.messageService.add({severity: 'error', detail: msg});
+      try {
+
+        errors = errorResponse.error[0]['mensagemUsuario'];
+        msg = errors;
+
+      } catch (e) { }
+
+      console.error('Ocorreu um erro', errorResponse);
+
+    } else {
+
+      msg = 'Erro ao processar serviço remoto. Tente novamente.';
+      console.error('Ocorreu um erro', errorResponse);
+
+    }
+
+    this.messageService.add({ severity: 'error', detail: msg });
 
   }
 }

@@ -25,8 +25,8 @@ export class LancamentoCadastroComponent implements OnInit {
   pessoaTeste: string;
 
   tipos = [
-    {label: 'Receita', value: 'RECEITA'},
-    {label: 'Despesa', value: 'DESPESA'}
+    { label: 'Receita', value: 'RECEITA' },
+    { label: 'Despesa', value: 'DESPESA' }
   ];
 
   categorias = [];
@@ -37,14 +37,14 @@ export class LancamentoCadastroComponent implements OnInit {
   uploadEmAndamento = false;
 
   constructor(private categoriaService: CategoriaService,
-              private pessoaService: PessoaService,
-              private lancamentoService: LancamentoService,
-              private messageService: MessageService,
-              private errorHandler: ErrorHandlerService,
-              private rota: ActivatedRoute,
-              private router: Router,
-              private titulo: Title,
-              private formBuilder: FormBuilder ) { }
+    private pessoaService: PessoaService,
+    private lancamentoService: LancamentoService,
+    private messageService: MessageService,
+    private errorHandler: ErrorHandlerService,
+    private rota: ActivatedRoute,
+    private router: Router,
+    private titulo: Title,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit() {
 
@@ -98,7 +98,7 @@ export class LancamentoCadastroComponent implements OnInit {
     if (input.value) {
       return null;
     } else {
-      return {obrigatoriedade: true }; // utiliza esse nome no html
+      return { obrigatoriedade: true }; // utiliza esse nome no html
     }
 
   }
@@ -109,7 +109,7 @@ export class LancamentoCadastroComponent implements OnInit {
       if (!input.value || input.value.length >= valor) {
         return null;
       } else {
-        return {tamanhoMinimo: {tamanho: valor}};
+        return { tamanhoMinimo: { tamanho: valor } };
       }
 
     };
@@ -125,7 +125,7 @@ export class LancamentoCadastroComponent implements OnInit {
         this.categorias = categorias.map(c => ({ label: c.nome, value: c.codigo }));
       })
       .catch(erro => this.errorHandler.handle(erro));
-    }
+  }
 
   carregarPessoas() {
     return this.pessoaService.listarTodas()
@@ -136,17 +136,17 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   salvar() {
-      if (this.editando) {
-        this.atualizarLancamento();
-      } else {
-        this.adicionarLancamento();
-      }
+    if (this.editando) {
+      this.atualizarLancamento();
+    } else {
+      this.adicionarLancamento();
+    }
   }
 
   adicionarLancamento() {
-      this.lancamentoService.adicionar(this.formulario.value)
+    this.lancamentoService.adicionar(this.formulario.value)
       .then(() => {
-        this.messageService.add({severity: 'success', detail: 'Lançamento adicionado com sucesso.'});
+        this.messageService.add({ severity: 'success', detail: 'Lançamento adicionado com sucesso.' });
         this.router.navigate(['/lancamentos']);
       })
       .catch(erro => this.errorHandler.handle(erro));
@@ -154,19 +154,19 @@ export class LancamentoCadastroComponent implements OnInit {
 
   atualizarLancamento() {
     this.lancamentoService.atualizar(this.formulario.value)
-    .then((lancamento) => {
+      .then((lancamento) => {
 
-      this.formulario.patchValue(lancamento);
-      this.messageService.add({severity: 'success', detail: 'Lançamento alterado com sucesso.'});
+        this.formulario.patchValue(lancamento);
+        this.messageService.add({ severity: 'success', detail: 'Lançamento alterado com sucesso.' });
 
-      this.router.navigate(['/lancamentos']);
+        this.router.navigate(['/lancamentos']);
 
-    })
-    .catch(erro => this.errorHandler.handle(erro));
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
-  carregarLancamento(codigo: number){
-      this.lancamentoService.buscarPorCodigo(codigo)
+  carregarLancamento(codigo: number) {
+    this.lancamentoService.buscarPorCodigo(codigo)
       .then(lancamento => {
         this.formulario.patchValue(lancamento);
         this.atualizarTituloLancamento();
@@ -194,7 +194,7 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   erroUpload(event) {
-    this.messageService.add({severity: 'error', detail: 'Lançamento adicionado com sucesso.'});
+    this.messageService.add({ severity: 'error', detail: 'Lançamento adicionado com sucesso.' });
 
     this.uploadEmAndamento = false;
   }

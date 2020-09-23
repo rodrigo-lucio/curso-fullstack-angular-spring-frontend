@@ -9,8 +9,8 @@
       </div>
 
       <div class="ui-g-12 ui-fluid">
-          <label>Nome</label>
-          <input pInputText type="text" name="nome" [(ngModel)]="filtro.nome">
+        <label>Nome</label>
+        <input pInputText type="text" name="nome" [(ngModel)]="filtro.nome">
       </div>
 
       <div class="ui-g-12">
@@ -21,47 +21,43 @@
 
     <div class="ui-g-12">
 
-      <p-table [value]="pessoas" [paginator]="true" [responsive]="true"
-      [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros"
-      (onLazyLoad)="aoMudarPagina($event)" #tabela>
-        <ng-template pTemplate="header" >
-            <tr>
-                <th>Nome</th>
-                <th class="col-media-header">Cidade</th>
-                <th class="col-pequena-header">Estado</th>
-                <th class="col-pequena-header">Status</th>
-                <th class="col-pequena-header">Ação</th>
-            </tr>
+      <p-table [value]="pessoas" [paginator]="true" [responsive]="true" [rows]="filtro.itensPorPagina" [lazy]="true"
+        [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)" #tabela>
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Nome</th>
+            <th class="col-media-header">Cidade</th>
+            <th class="col-pequena-header">Estado</th>
+            <th class="col-pequena-header">Status</th>
+            <th class="col-pequena-header">Ação</th>
+          </tr>
         </ng-template>
         <ng-template pTemplate="body" let-pessoa>
-            <tr>
-                <td>{{pessoa.nome}}</td>
-                <td>{{pessoa.endereco.cidade?.nome}}</td>
-                <td>{{pessoa.endereco.cidade?.estado.nome}}</td>
-                <td>
-                  <a href="javascript:;" pTooltip="{{pessoa.ativo ? 'Desativar' : 'Ativar'}}" tooltipPosition="top"
-                  (click)="alterarStatus(pessoa)">{{pessoa.ativo ? 'Ativo' : 'Inativo'}}</a>
-                </td>
-                <td class="col-acoes">
-                  <a class="espaco-icones" pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                  [routerLink]="['/pessoas', pessoa.codigo]"></a>
-                  <button class="espaco-icones" pButton type="button" icon="pi pi-trash" pTooltip="Excluir"
-                  tooltipPosition="top"
-                  (click)="confirmarExclusao(pessoa)"></button>
-                </td>
-            </tr>
+          <tr>
+            <td>{{pessoa.nome}}</td>
+            <td>{{pessoa.endereco.cidade?.nome}}</td>
+            <td>{{pessoa.endereco.cidade?.estado.nome}}</td>
+            <td>
+              <a href="javascript:;" pTooltip="{{pessoa.ativo ? 'Desativar' : 'Ativar'}}" tooltipPosition="top"
+                (click)="alterarStatus(pessoa)">{{pessoa.ativo ? 'Ativo' : 'Inativo'}}</a>
+            </td>
+            <td class="col-acoes">
+              <a class="espaco-icones" pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+                [routerLink]="['/pessoas', pessoa.codigo]"></a>
+              <button class="espaco-icones" pButton type="button" icon="pi pi-trash" pTooltip="Excluir"
+                tooltipPosition="top" (click)="confirmarExclusao(pessoa)"></button>
+            </td>
+          </tr>
         </ng-template>
       </p-table>
 
     </div>
 
     <div class="ui-g-12">
-        <a pButton label="Nova Pessoa" routerLink="/pessoas/novo"></a>
+      <a pButton label="Nova Pessoa" routerLink="/pessoas/novo"></a>
     </div>
 
   </div>
 
 
 </div>
-
-

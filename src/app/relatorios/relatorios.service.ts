@@ -11,7 +11,7 @@ export class RelatoriosService {
 
   constructor(private httpClient: HttpClient) {
     this.lancamentosUrl = `${environment.apiUrl}/lancamentos`;
-   }
+  }
 
   async relatorioLancamentosPorPessoa(inicio: Date, fim: Date) {
 

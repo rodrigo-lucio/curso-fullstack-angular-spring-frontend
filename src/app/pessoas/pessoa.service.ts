@@ -14,7 +14,7 @@ export class PessoaFiltro {
 export class PessoaService {
 
   pessoasUrl: string;
-    cidadesUrl: string;
+  cidadesUrl: string;
   estadosUrl: string;
 
   constructor(private http: HttpClient) {
@@ -53,7 +53,6 @@ export class PessoaService {
     const pessoa = response;
     return pessoa;
 
-
   }
 
   async listarTodas(): Promise<any> {
@@ -75,7 +74,7 @@ export class PessoaService {
   async alterarStatus(codigo: number, ativo: boolean): Promise<void> {
 
     const headers = new HttpHeaders()
-    .append('Content-Type', 'application/json');
+      .append('Content-Type', 'application/json');
 
     await this.http.put(`${this.pessoasUrl}/${codigo}/ativo`, ativo, { headers })
       .toPromise();
@@ -87,7 +86,7 @@ export class PessoaService {
 
     return this.http.post<Pessoa>(
       this.pessoasUrl, pessoa)
-    .toPromise();
+      .toPromise();
 
   }
 
