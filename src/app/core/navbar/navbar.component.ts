@@ -11,8 +11,6 @@ import { ErrorHandlerService } from '../error-handler.service';
 })
 export class NavbarComponent implements OnInit {
 
-  exibindoMenu = false;
-
   constructor(public auth: AuthService,
     private router: Router,
     private errrorHandle: ErrorHandlerService) { }
@@ -131,7 +129,6 @@ export class NavbarComponent implements OnInit {
   }
 
   formAlterarSenha() {
-    this.exibindoMenu = false;
     this.display = true;
   }
 }
