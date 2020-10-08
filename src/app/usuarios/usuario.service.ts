@@ -1,6 +1,6 @@
 import { Usuario } from './../core/model';
 import { environment } from './../../environments/environment';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 export class UsuarioFiltro {
@@ -71,6 +71,17 @@ export class UsuarioService {
 
     const response = await this.httpClient.put<Usuario>(`${this.usuariosUrl}/${usuario.codigo}`, usuario)
       .toPromise();
+    return response;
+
+  }
+
+  async alterarSenha(codigoUsuario: number, senhaAtual: string, novaSenha: string, novaSenhaConfirma: string): Promise<any> {
+
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/x-www-form-urlencoded');
+
+    const body = `senha_atual=${senhaAtual}&nova_senha=${novaSenha}&nova_senha_conf=${novaSenhaConfirma}`;
+    const response = await this.httpClient.put(`${this.usuariosUrl}/alterarsenha/${codigoUsuario}`, body, { headers }).toPromise();
     return response;
 
   }

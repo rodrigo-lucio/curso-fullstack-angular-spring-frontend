@@ -1,8 +1,8 @@
-<div class ="ui-g">
+<div class="ui-g">
 
   <div class="ui-g-12">
-     <button pButton icon="pi pi-plus" iconPos="left" label="Novo" type="button" class="ui-button-secondary"
-     (click)="prepararNovoContato()"></button>
+    <button pButton icon="pi pi-plus" iconPos="left" label="Novo" type="button" class="ui-button-secondary"
+      (click)="prepararNovoContato()"></button>
   </div>
 
   <div class="ui-g-12">
@@ -24,12 +24,12 @@
           <td>{{contato.nome}}</td>
           <td>{{contato.email}}</td>
           <td>{{contato.telefone}}</td>
-          <td class="col-acoes" >
-            <button pButton icon="pi pi-pencil" type="button" class="espaco-icones" pTooltip="Editar" tooltipPosition="top"
-            (click)="prepararEdicaoContato(contato, rowIndex)"></button>
+          <td class="col-acoes">
+            <button pButton icon="pi pi-pencil" type="button" class="espaco-icones" pTooltip="Editar"
+              tooltipPosition="top" (click)="prepararEdicaoContato(contato, rowIndex)"></button>
 
-            <button pButton icon="pi pi-trash" type="button" class="espaco-icones" pTooltip="Excluir" tooltipPosition="top"
-            (click)="removerContato(rowIndex)"></button>
+            <button pButton icon="pi pi-trash" type="button" class="espaco-icones" pTooltip="Excluir"
+              tooltipPosition="top" (click)="removerContato(rowIndex)"></button>
           </td>
         </tr>
 
@@ -38,7 +38,7 @@
       <ng-template pTemplate="emptymessage">
         <tr>
           <td colspan="4">
-              Nenhum contato cadastrado
+            Nenhum contato cadastrado
           </td>
         </tr>
       </ng-template>
@@ -47,19 +47,20 @@
 </div>
 
 
-<p-dialog [header]="editando ? 'Edição de contato' : 'Novo Contato'" [(visible)]="exibindoFormularioCadastro" modal="modal" *ngIf="contato">
+<p-dialog [header]="editando ? 'Edição de contato' : 'Novo Contato'" [(visible)]="exibindoFormularioCadastro"
+  modal="modal" *ngIf="contato">
 
   <form #frmContato="ngForm" (ngSubmit)="confirmarContato(frmContato)">
     <div class="ui-g-12 ui-fluid">
       <label>Nome:</label>
-      <input pInputText type="text" name="nome" required [(ngModel)]="contato.nome" #contatoNome="ngModel"/>
+      <input pInputText type="text" name="nome" required [(ngModel)]="contato.nome" #contatoNome="ngModel" />
       <app-message [control]="contatoNome" error="required" text="Informe o nome"></app-message>
     </div>
 
 
     <div class="ui-g-12 ui-fluid">
       <label>Email:</label>
-      <input pInputText type="text" name="email" required email [(ngModel)]="contato.email" #contatoEmail="ngModel"/>
+      <input pInputText type="text" name="email" required email [(ngModel)]="contato.email" #contatoEmail="ngModel" />
       <app-message [control]="contatoEmail" error="required" text="Informe o email"></app-message>
       <app-message [control]="contatoEmail" error="email" text="Informe um email válido"></app-message>
     </div>

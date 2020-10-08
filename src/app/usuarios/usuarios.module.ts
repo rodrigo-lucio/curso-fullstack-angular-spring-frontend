@@ -1,3 +1,4 @@
+import { DialogModule } from 'primeng/dialog';
 import { SharedModule } from './../shared/shared.module';
 import { DropdownModule } from 'primeng/dropdown';
 import { TooltipModule } from 'primeng/tooltip';
@@ -12,11 +13,9 @@ import { TableModule } from 'primeng/table';
 import { CheckboxModule } from 'primeng/checkbox';
 import { UsuarioCadastroComponent } from './usuario-cadastro/usuario-cadastro.component';
 import { PasswordModule } from 'primeng/password';
-import { UsuarioAlterarSenhaComponent } from './usuario-alterar-senha/usuario-alterar-senha.component';
-
 
 @NgModule({
-  declarations: [UsuariosPesquisaComponent, UsuarioCadastroComponent, UsuarioAlterarSenhaComponent],
+  declarations: [UsuariosPesquisaComponent, UsuarioCadastroComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -30,6 +29,7 @@ import { UsuarioAlterarSenhaComponent } from './usuario-alterar-senha/usuario-al
     CheckboxModule,
     UsuariosRoutingModule,
     PasswordModule,
+    DialogModule,
 
     SharedModule
   ]

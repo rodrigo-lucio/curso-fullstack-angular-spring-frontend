@@ -2,31 +2,12 @@
   <div class="container">
     <div class="ui-g">
       <div class="ui-g-12">
-        <a href="javascript:;" class="navbar-toggle" (click)="exibindoMenu = !exibindoMenu"><i
-            class="pi pi-bars"></i></a>
+        <p-button icon="pi pi-bars" (onClick)="menu.toggle($event)"></p-button>
       </div>
     </div>
   </div>
 
-  <ul class="navbar-menu" [hidden]="!exibindoMenu">
-    <li class="navbar-usuario">{{ auth.jwtPayload?.nome }}</li>
-
-    <li class="navbar-menuitem" routerLinkActive="ativo" *ngIf="auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"><a
-        routerLink="/dashboard" (click)="exibindoMenu = !exibindoMenu">Dashboard</a></li>
-
-    <li class="navbar-menuitem" routerLinkActive="ativo" *ngIf="auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"><a
-        routerLink="/lancamentos" (click)="exibindoMenu = !exibindoMenu">Lançamentos</a></li>
-
-    <li class="navbar-menuitem" routerLinkActive="ativo" *ngIf="auth.temPermissao('ROLE_PESQUISAR_PESSOA')"><a
-        routerLink="/pessoas" (click)="exibindoMenu = !exibindoMenu">Pessoas</a></li>
-
-    <li class="navbar-menuitem" routerLinkActive="ativo" *ngIf="auth.temPermissao('ROLE_PESQUISAR_USUARIO')"><a
-        routerLink="/usuarios" (click)="exibindoMenu = !exibindoMenu">Usuários</a></li>
-
-    <li class="navbar-menuitem" routerLinkActive="ativo" *ngIf="auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"><a
-        routerLink="/relatorios/lancamentos" (click)="exibindoMenu = !exibindoMenu">Relatórios</a></li>
-
-    <li class="navbar-menuitem" *ngIf="auth.jwtPayload != null"><a href="" (click)="logout()">Logout</a></li>
-  </ul>
-
-</nav>
+  <app-usuario-modificar-senha [display]="display" [codUsuario]="auth.jwtPayload?.id"
+    (displayChange)="onDialogClose($event)">
+  </app-usuario-modificar-senha>
+  <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>

@@ -23,23 +23,21 @@
         <app-message [control]="formulario.get('email')" error="email" text="Email inválido"></app-message>
       </div>
 
+      <!--
       <div class="ui-g-12 ui-fluid">
         <label>Senha:</label>
-        <input pPassword type="password" formControlName="senha">
+        <input pInputText type="password" formControlName="senha">
         <app-message [control]="formulario.get('senha')" error="required" text="Informe a senha"></app-message>
         <app-message [control]="formulario.get('senha')" error="minlength"
           text="Mínimo de {{formulario.get('senha').errors?.minlength?.requiredLength}} caracteres"></app-message>
       </div>
-
+      -->
       <div class="ui-g-12 ui-fluid">
         <p-checkbox label="Ativo" binary="true" [formControl]="formulario.controls['ativo']"></p-checkbox>
       </div>
 
       <div class="ui-g-12 ui-fluid">
         <label>Permissões:</label>
-      </div>
-
-      <div class="ui-g-12 ui-fluid">
         <div *ngFor="let permissao of permissoes">
 
           <label *ngIf="nomeGrupoPermissao(permissao.tipoPermissao)">
@@ -49,8 +47,6 @@
 
           <input type="checkbox" [value]="permissao" [checked]="existePermissao(permissao)"
             (change)="addPermissaoCheck(permissao, $event)">
-
-
           <label>
             {{permissao.descricao.replace('ROLE_', '').replace('_', ' ') | titlecase}}
           </label>
@@ -61,6 +57,7 @@
         <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid"></button>
         <a routerLink="/usuarios">Voltar para a pesquisa</a>
       </div>
+
 
     </div>
 

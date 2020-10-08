@@ -8,13 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-    constructor(
-      private route: Router) {
-    }
+  constructor(
+    private route: Router) {
+  }
 
-    exibirNavBar() {
-      return this.route.url !== '/login';
-    }
+  exibirNavBar() {
+    return this.route.url !== '/login';
+  }
 
 
 }

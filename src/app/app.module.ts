@@ -1,3 +1,4 @@
+import { MenuItem } from 'primeng/api';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,6 +13,7 @@ import { AppComponent } from './app.component';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 
+import { TieredMenuModule } from 'primeng/tieredmenu';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -29,6 +31,7 @@ registerLocaleData(localePt, 'pt-BR');
     CoreModule,
     SegurancaModule,
     AppRoutingModule,
+    TieredMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

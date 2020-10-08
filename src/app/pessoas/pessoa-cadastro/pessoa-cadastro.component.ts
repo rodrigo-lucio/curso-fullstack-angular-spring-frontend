@@ -26,11 +26,11 @@ export class PessoaCadastroComponent implements OnInit {
   estadoSelecionado: number;
 
   constructor(private pessoaservice: PessoaService,
-              private messageService: MessageService,
-              private errorHandler: ErrorHandlerService,
-              private rota: ActivatedRoute,
-              private router: Router,
-              private titulo: Title) { }
+    private messageService: MessageService,
+    private errorHandler: ErrorHandlerService,
+    private rota: ActivatedRoute,
+    private router: Router,
+    private titulo: Title) { }
 
   ngOnInit() {
 
@@ -68,57 +68,57 @@ export class PessoaCadastroComponent implements OnInit {
 
   adicionar(form: NgForm) {
     this.pessoaservice.adicionar(this.pessoa)
-    .then(() => {
+      .then(() => {
 
-      this.messageService.add({severity: 'success', detail: 'Pessoa adicionada com sucesso.'});
+        this.messageService.add({ severity: 'success', detail: 'Pessoa adicionada com sucesso.' });
 
-      this.pessoa = new Pessoa();
-      this.router.navigate(['/pessoas']);
+        this.pessoa = new Pessoa();
+        this.router.navigate(['/pessoas']);
 
-    })
-    .catch(erro => this.errorHandler.handle(erro));
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   atualizar(form: NgForm) {
     this.pessoaservice.atualizar(this.pessoa)
-    .then((pessoa) => {
-      this.pessoa = pessoa;
+      .then((pessoa) => {
+        this.pessoa = pessoa;
 
-      this.messageService.add({severity: 'success', detail: 'Pessoa alterada com sucesso.'});
+        this.messageService.add({ severity: 'success', detail: 'Pessoa alterada com sucesso.' });
 
-      this.router.navigate(['/pessoas']);
-    })
-    .catch(erro => this.errorHandler.handle(erro));
+        this.router.navigate(['/pessoas']);
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   carregarPessoa(codigo: number) {
     this.pessoaservice.buscaPorCodigo(codigo)
-    .then(pessoa => {
+      .then(pessoa => {
 
-      this.pessoa = pessoa;
-      this.estadoSelecionado = (this.pessoa.endereco.cidade) ? this.pessoa.endereco.cidade.estado.codigo : null;
+        this.pessoa = pessoa;
+        this.estadoSelecionado = (this.pessoa.endereco.cidade) ? this.pessoa.endereco.cidade.estado.codigo : null;
 
-      if (this.estadoSelecionado) {
+        if (this.estadoSelecionado) {
           this.carregarCidades();
-      }
+        }
 
-      this.atualizarTituloPessoa();
-    });
+        this.atualizarTituloPessoa();
+      });
   }
 
   carregarEstados() {
     this.pessoaservice.listarEstados().then(listaEstados => {
-        // Carrega o dropdown
-        this.listaUf = listaEstados.map(uf => ({label: uf.nome, value: uf.codigo}));
+      // Carrega o dropdown
+      this.listaUf = listaEstados.map(uf => ({ label: uf.nome, value: uf.codigo }));
     })
-    .catch(erro => this.errorHandler.handle(erro));
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   carregarCidades() {
     this.pessoaservice.pesquisarCidades(this.estadoSelecionado).then(listaCidades => {
-      this.listaCidades = listaCidades.map(cidade => ({label: cidade.nome, value: cidade.codigo}));
-  })
-  .catch(erro => this.errorHandler.handle(erro));
+      this.listaCidades = listaCidades.map(cidade => ({ label: cidade.nome, value: cidade.codigo }));
+    })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
 }
