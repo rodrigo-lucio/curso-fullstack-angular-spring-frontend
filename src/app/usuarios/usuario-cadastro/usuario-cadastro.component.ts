@@ -20,7 +20,7 @@ export class UsuarioCadastroComponent implements OnInit {
     private usuarioService: UsuarioService,
     private messageService: MessageService,
     private errorHandler: ErrorHandlerService,
-    private rota: ActivatedRoute,
+    public rota: ActivatedRoute,
     private router: Router,
     private titulo: Title,
     private permissaoService: PermissaoService) {
@@ -37,14 +37,11 @@ export class UsuarioCadastroComponent implements OnInit {
   permissoes = new Array<Permissao>();
 
   tipoAnterior = 0;
+  alterarSenha = false;
+
+  display = false;
 
   ngOnInit(): void {
-
-    let teste = 'ROLE_CADASTRAR_LANCAMENTO';
-
-
-
-    console.log(teste.substring(teste.lastIndexOf("_") + 1));
 
 
     this.titulo.setTitle('Cadastro de Usuário');
@@ -65,7 +62,7 @@ export class UsuarioCadastroComponent implements OnInit {
       codigo: [],
       nome: [, [Validators.required, Validators.minLength(10)]],
       email: [, [Validators.required, Validators.email]],
-      senha: [, [Validators.required, Validators.minLength(8)]],
+      //senha: [, [Validators.required, Validators.minLength(8)]], - Criado form de alterar senha
       ativo: true,
       permissoes: this.formBuilder.array([], [Validators.required]),
     });
@@ -107,6 +104,7 @@ export class UsuarioCadastroComponent implements OnInit {
   }
 
   salvar() {
+
 
     if (this.editando) {
       this.atualizarUsuario();
@@ -182,5 +180,6 @@ export class UsuarioCadastroComponent implements OnInit {
     }
 
   }
+
 
 }

@@ -1,4 +1,13 @@
-
+import { TieredMenuModule } from 'primeng/tieredmenu';
+import { UsuarioModificarSenhaComponent } from './usuario-modificar-senha/usuario-modificar-senha.component';
+import { UsuariosModule } from './../usuarios/usuarios.module';
+import { SharedModule } from './../shared/shared.module';
+import { CheckboxModule } from 'primeng/checkbox';
+import { DropdownModule } from 'primeng/dropdown';
+import { TooltipModule } from 'primeng/tooltip';
+import { ButtonModule } from 'primeng/button';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DialogModule } from 'primeng/dialog';
 import { NaoAutorizadoComponent } from './nao-autorizado.component';
 import { RouterModule } from '@angular/router';
 import { NgModule, LOCALE_ID } from '@angular/core';
@@ -20,16 +29,35 @@ import { RelatoriosService } from './../relatorios/relatorios.service';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
+import { InputTextModule } from 'primeng/inputtext';
+import { TableModule } from 'primeng/table';
+import { PasswordModule } from 'primeng/password';
 
 @NgModule({
-  declarations: [NavbarComponent, PaginaNaoEncontradaComponent, NaoAutorizadoComponent],
+  declarations: [NavbarComponent, PaginaNaoEncontradaComponent, NaoAutorizadoComponent, UsuarioModificarSenhaComponent],
   imports: [
     CommonModule,
     RouterModule,
     ConfirmDialogModule,
     MessagesModule,
     MessageModule,
-    ToastModule
+    ToastModule,
+
+    FormsModule,
+    ReactiveFormsModule,
+
+    InputTextModule,
+    ButtonModule,
+    DialogModule,
+
+
+    TableModule,
+    TooltipModule,
+    DropdownModule,
+    CheckboxModule,
+    PasswordModule,
+    TieredMenuModule,
+    SharedModule
 
   ],
   exports: [

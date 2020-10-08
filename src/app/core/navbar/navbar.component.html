@@ -2,12 +2,15 @@
   <div class="container">
     <div class="ui-g">
       <div class="ui-g-12">
-        <a href="javascript:;" class="navbar-toggle" (click)="exibindoMenu = !exibindoMenu"><i
-            class="pi pi-bars"></i></a>
+
+        <!--<a href="javascript:;" class="navbar-toggle" (click)="exibindoMenu = !exibindoMenu"><i
+            class="pi pi-bars"></i></a> -->
+        <p-button icon="pi pi-bars" (onClick)="menu.toggle($event)"></p-button>
       </div>
     </div>
   </div>
 
+  <!-- Menu Antigo
   <ul class="navbar-menu" [hidden]="!exibindoMenu">
     <li class="navbar-usuario">{{ auth.jwtPayload?.nome }}</li>
 
@@ -27,6 +30,16 @@
         routerLink="/relatorios/lancamentos" (click)="exibindoMenu = !exibindoMenu">Relatórios</a></li>
 
     <li class="navbar-menuitem" *ngIf="auth.jwtPayload != null"><a href="" (click)="logout()">Logout</a></li>
-  </ul>
 
+    <li class="navbar-menuitem" *ngIf="auth.jwtPayload != null">
+      <p-button label="Altera Senha" (onClick)="formAlterarSenha()"></p-button>
+    </li>
+
+
+  </ul>
+-->
 </nav>
+<app-usuario-modificar-senha [display]="display" [codUsuario]="auth.jwtPayload?.id"
+  (displayChange)="onDialogClose($event)">
+</app-usuario-modificar-senha>
+<p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>

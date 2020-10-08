@@ -5,21 +5,20 @@
     <div class="ui-g ui-fluid">
 
       <div class="ui-g-12">
-        <h1>Login</h1>
+        <h1>Dani linda do digo lindo</h1>
       </div>
 
       <div class="ui-g-12">
 
-        <input pInputText type="email" name="usuario" placeholder="E-mail"
-        ngModel #usuario="ngModel" required>
+        <input pInputText type="email" name="usuario" placeholder="E-mail" ngModel #usuario="ngModel" required>
         <app-message [control]="usuario" error="required" text="Informe o e-mail"></app-message>
 
       </div>
 
       <div class="ui-g-12">
 
-        <input pInputText type="password" name="senha" placeholder="Senha"
-        ngModel #senha="ngModel"  required #senhalimpar>
+        <input pInputText type="password" name="senha" placeholder="Senha" ngModel #senha="ngModel" required
+          #senhalimpar>
         <app-message [control]="senha" error="required" text="Informe a senha"></app-message>
 
       </div>

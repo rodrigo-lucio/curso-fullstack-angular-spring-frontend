@@ -1,0 +1,29 @@
+<p-dialog header="Alterar senha" [(visible)]="display" modal="true" [responsive]="true" [style]="{'width':'420px'}"
+  (onHide)="onClose()">
+
+  <form #frmAltSenha="ngForm" (ngSubmit)="confirmar(frmAltSenha)">
+    <div class="ui-g-12 ui-fluid">
+      <label>Senha atual:</label>
+      <input pInputText type="password" required [(ngModel)]="senhaAtual" name="senhaAtual" />
+    </div>
+
+    <div class="ui-g-12 ui-fluid">
+      <label>Nova senha:</label>
+      <input pInputText type="password" required [(ngModel)]="novaSenha" name="novaSenha" />
+    </div>
+
+    <div class="ui-g-12 ui-fluid">
+      <label>Confirma nova senha:</label>
+      <input pInputText type="password" required [(ngModel)]="novaSenhaConfirma" name="novaSenhaConfirma" />
+    </div>
+
+    <div class="ui-g-6">
+      <button pButton type="submit" label="Confirmar" [disabled]="frmAltSenha.invalid"></button>
+    </div>
+
+    <div class="ui-g-6" style="text-align:right">
+      <button pButton type="button" (click)="display=false" label="Cancelar"></button>
+    </div>
+  </form>
+
+</p-dialog>
