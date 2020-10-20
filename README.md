@@ -1,3 +1,7 @@
+<h1 align="center">
+    <img src=".github/dashboard.png" />
+</h1>
+
 ## 💻 Projeto
 
 Front-end do projeto desenvolvido durante o curso Fullstack Angular e Spring da [AlgaWorks](https://github.com/algaworks).
