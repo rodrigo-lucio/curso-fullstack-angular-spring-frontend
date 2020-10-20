@@ -31,6 +31,7 @@
     "@types/jest": "^25.2.1",
     "@types/mocha": "^7.0.2",
     "@types/node": "^12.11.1",
+    "cep-promise": "^4.0.2",
     "chart.js": "^2.9.3",
     "codelyzer": "^5.1.2",
     "jasmine-core": "~3.5.0",

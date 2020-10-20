@@ -46,7 +46,7 @@ export class UsuarioModificarSenhaComponent implements OnInit {
 
     this.usuarioService.alterarSenha(this.codUsuario, this.senhaAtual, this.novaSenha, this.novaSenhaConfirma)
       .then(() => {
-        this.messageService.add({ severity: 'success', detail: 'Senha alterado com sucesso.' });
+        this.messageService.add({ severity: 'success', detail: 'Senha alterada com sucesso.' });
 
         frm.reset();
         this.display = false;

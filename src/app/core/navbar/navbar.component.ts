@@ -66,6 +66,7 @@ export class NavbarComponent implements OnInit {
       {
         label: 'Usuários',
         icon: 'pi pi-user',
+        visible: this.auth.temPermissao('ROLE_PESQUISAR_USUARIO') || this.auth.temPermissao('ROLE_CADASTRAR_USUARIO'),
         items: [
           {
             label: 'Incluir',

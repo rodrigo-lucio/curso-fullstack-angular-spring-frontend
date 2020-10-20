@@ -1,27 +1,41 @@
-# AlgamoneyUi
+## 💻 Projeto
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
+Front-end do projeto desenvolvido durante o curso Fullstack Angular e Spring da [AlgaWorks](https://github.com/algaworks).
 
-## Development server
+Utilizado [Angular CLI ](https://github.com/angular/angular-cli) versão 10.0.1.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+O repositório do back-end você encontra [aqui](https://github.com/rodrigo-lucio/curso-fullstack-angular-spring-backend).
 
-## Code scaffolding
+## :rocket: Tecnologias
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Neste projeto foram utilizadas as seguintes tecnologias:
 
-## Build
+- [Angular](https://angular.io/)
+- [Biblioteca PrimeNG](https://www.primefaces.org/primeng-5.2.7/)
+- Deploy no [Heroku](https://heroku.com/)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## ▶️ Utilização
 
-## Running unit tests
+Dentro da pasta do projeto, execute o comando `npm install` para instalar as todas as dependências necessárias.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Após isso, execute o comando `ng serve` para iniciar a aplicação.
 
-## Running end-to-end tests
+A projeto estará rodando em `http://localhost:4200`.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Com a API do Back-end iniciada, você poderá utilizar as seguintes credencias para acessar:
 
-## Further help
+Login: admin@algamoney.com e senha: admin
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Obs: Este projeto fará automaticamente o controle de busca e renovação do token [JWT](https://jwt.io/).
+
+
+
+
+
+
+
+
+
+
+
+

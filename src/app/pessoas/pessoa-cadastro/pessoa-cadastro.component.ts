@@ -8,7 +8,7 @@ import { MessageService } from 'primeng/api';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { PessoaService } from './../pessoa.service';
 import { Pessoa, Contato } from 'src/app/core/model';
-
+import * as cep from 'cep-promise'
 
 @Component({
   selector: 'app-pessoa-cadastro',
@@ -119,6 +119,22 @@ export class PessoaCadastroComponent implements OnInit {
       this.listaCidades = listaCidades.map(cidade => ({ label: cidade.nome, value: cidade.codigo }));
     })
       .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  buscarCep() {
+
+    cep(this.pessoa.endereco.cep).then(
+      cepResponse => {
+        console.log(cepResponse)
+        this.pessoa.endereco.logradouro = cepResponse.street;
+        this.pessoa.endereco.cidade.nome = cepResponse.city;
+        this.pessoa.endereco.cidade.estado.codigo = 9;
+
+        //this.listaUf.filter()
+
+      }
+    ).catch(erro => this.errorHandler.handle(erro));
+
   }
 
 }
