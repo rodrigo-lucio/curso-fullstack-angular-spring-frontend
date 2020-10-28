@@ -11,6 +11,7 @@ export class Pessoa {
 export class Estado {
   codigo: number;
   nome: string;
+  uf: string;
 }
 
 export class Cidade {

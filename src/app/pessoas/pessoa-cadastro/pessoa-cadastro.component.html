@@ -19,14 +19,45 @@
 
       </div>
 
-      <div class="ui-g-12 ui-md-9 ui-fluid">
-        <label>Logradouro:</label>
+      <div class="ui-g-12 ui-md-4 ui-fluid">
+        <label>CEP:</label>
+        <p-inputMask mask="99.999-999" name="cep" [(ngModel)]="pessoa.endereco.cep" (onBlur)="buscarCep()" ngModel
+          #cep="ngModel" required>
+        </p-inputMask>
+        <app-message [control]="cep" error="required" text="Informe o CEP"></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-4 ui-fluid">
+
+        <label>Estado:</label>
+
+        <p-dropdown [options]="listaUf" placeholder="Selecione" [filter]="true" name="estado"
+          [(ngModel)]="estadoSelecionado" (onChange)="carregarCidades()" ngModel #estado="ngModel" required>
+        </p-dropdown>
+
+        <app-message [control]="estado" error="required" text="Informe o estado"></app-message>
+      </div>
+
+
+      <div class="ui-g-12 ui-md-4 ui-fluid">
+        <label>Cidade:</label>
+
+        <p-dropdown [options]="listaCidades" placeholder="Selecione" [filter]="true" name="cidade"
+          [(ngModel)]="pessoa.endereco.cidade.codigo" ngModel #cidade="ngModel" required>
+          <!-- Antes do cep tinha essa propriedade [disabled]="!estadoSelecionado" -->
+        </p-dropdown>
+
+        <app-message [control]="cidade" error="required" text="Informe a cidade"></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-8 ui-fluid">
+        <label>Rua / Avenida:</label>
         <input pInputText type="text" name="logradouro" [(ngModel)]="pessoa.endereco.logradouro" ngModel
           #logradouro="ngModel" required>
         <app-message [control]="logradouro" error="required" text="Informe o logradouro"></app-message>
       </div>
 
-      <div class="ui-g-12 ui-md-3 ui-fluid">
+      <div class="ui-g-12 ui-md-4 ui-fluid">
         <label>Número:</label>
         <input pInputText type="number" name="numero" [(ngModel)]="pessoa.endereco.numero" ngModel #numero="ngModel"
           required>
@@ -45,33 +76,7 @@
         <app-message [control]="bairro" error="required" text="Informe o bairro"></app-message>
       </div>
 
-      <div class="ui-g-12 ui-md-4 ui-fluid">
-        <label>CEP:</label>
-        <p-inputMask mask="99.999-999" name="cep" [(ngModel)]="pessoa.endereco.cep" ngModel #cep="ngModel" required>
-        </p-inputMask>
-        <app-message [control]="cep" error="required" text="Informe o CEP"></app-message>
-      </div>
 
-      <div class="ui-g-12 ui-md-6 ui-fluid">
-        <label>Estado:</label>
-
-        <p-dropdown [options]="listaUf" placeholder="Selecione" [filter]="true" name="estado"
-          [(ngModel)]="estadoSelecionado" (onChange)="carregarCidades()" ngModel #estado="ngModel" required>
-        </p-dropdown>
-
-        <app-message [control]="estado" error="required" text="Informe o estado"></app-message>
-      </div>
-
-
-      <div class="ui-g-12 ui-md-6 ui-fluid">
-        <label>Cidade:</label>
-
-        <p-dropdown [options]="listaCidades" placeholder="Selecione" [filter]="true" name="cidade"
-          [(ngModel)]="pessoa.endereco.cidade.codigo" ngModel #cidade="ngModel" required
-          [disabled]="!estadoSelecionado"></p-dropdown>
-
-        <app-message [control]="cidade" error="required" text="Informe a cidade"></app-message>
-      </div>
 
       <div class="ui-g-12">
 

@@ -1,8 +1,13 @@
 <nav class="navbar">
   <div class="container">
     <div class="ui-g">
-      <div class="ui-g-12">
-        <p-button icon="pi pi-bars" (onClick)="menu.toggle($event)"></p-button>
+      <div class="ui-g-7 ui-md-10 ui-fluid">
+        <p-button icon=" pi pi-bars" (onClick)="displaySide = true">
+        </p-button>
+      </div>
+      <div class="ui-g-5 ui-md-2 ui-fluid">
+        <p-splitButton label={{getPrimeiroNome()}} icon="pi pi-user" [model]="itemsButtonUser">
+        </p-splitButton>
       </div>
     </div>
   </div>
@@ -10,4 +15,8 @@
   <app-usuario-modificar-senha [display]="display" [codUsuario]="auth.jwtPayload?.id"
     (displayChange)="onDialogClose($event)">
   </app-usuario-modificar-senha>
-  <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>
+
+  <p-sidebar [(visible)]="displaySide">
+    <br>
+    <p-panelMenu #menu [model]="items" [multiple]="false"></p-panelMenu>
+  </p-sidebar>

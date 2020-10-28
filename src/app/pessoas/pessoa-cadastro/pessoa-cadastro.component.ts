@@ -58,6 +58,7 @@ export class PessoaCadastroComponent implements OnInit {
 
   salvar(form: NgForm) {
 
+    this.pessoa.endereco.cep = this.pessoa.endereco.cep.replace('-', '').replace('.', '');
     if (this.editando) {
       this.atualizar(form);
     } else {
@@ -117,24 +118,69 @@ export class PessoaCadastroComponent implements OnInit {
   carregarCidades() {
     this.pessoaservice.pesquisarCidades(this.estadoSelecionado).then(listaCidades => {
       this.listaCidades = listaCidades.map(cidade => ({ label: cidade.nome, value: cidade.codigo }));
+      this.buscarCidade();
     })
       .catch(erro => this.errorHandler.handle(erro));
   }
 
   buscarCep() {
 
-    cep(this.pessoa.endereco.cep).then(
-      cepResponse => {
-        console.log(cepResponse)
-        this.pessoa.endereco.logradouro = cepResponse.street;
-        this.pessoa.endereco.cidade.nome = cepResponse.city;
-        this.pessoa.endereco.cidade.estado.codigo = 9;
+    this.pessoa.endereco.cep = this.pessoa.endereco.cep.replace('-', '').replace('.', '');
 
-        //this.listaUf.filter()
+    if (this.pessoa.endereco.cep) {
 
-      }
-    ).catch(erro => this.errorHandler.handle(erro));
+      cep(this.pessoa.endereco.cep).then(
+        cepResponse => {
 
+          this.pessoa.endereco.logradouro = cepResponse.street;
+          this.pessoa.endereco.cidade.nome = cepResponse.city;
+          this.pessoa.endereco.bairro = cepResponse.neighborhood;
+
+          this.pessoaservice.buscaEstadoPorUf(cepResponse.state)
+            .then((ufResponse) => {
+              this.estadoSelecionado = ufResponse[0].codigo;
+              this.pessoa.endereco.cidade.estado.codigo = this.estadoSelecionado;
+              this.pessoa.endereco.cidade.estado.uf = ufResponse[0].uf;
+
+              this.pessoaservice.adicionarCidade(this.pessoa.endereco.cidade)
+                .then(() => {
+                  //this.messageService.add({ severity: 'success', detail: 'Cidade adicionada com sucesso.' });
+                  this.carregarCidades();
+                })
+                .catch(erro => {
+
+                  if (erro.error[0].mensagemUsuario != 'Cidade já cadastrada') {
+                    this.errorHandler.handle(erro);
+                  } else {
+                    this.carregarCidades();
+                  }
+
+                });
+
+            })
+            .catch(erro => this.errorHandler.handle(erro));
+
+
+        }
+      ).catch(erro => {
+        console.log(erro);
+        this.errorHandler.handle(erro);
+
+      });
+
+    }
+  }
+
+  private buscarCidade() {
+
+    if (this.pessoa.endereco.cidade.nome && this.pessoa.endereco.cidade.estado.uf) {
+      this.pessoaservice.pesquisarCidade(this.pessoa.endereco.cidade.nome, this.pessoa.endereco.cidade.estado.uf)
+        .then((cidadeResponse) => {
+          this.pessoa.endereco.cidade.codigo = cidadeResponse[0].codigo;
+        })
+        .catch(erro => this.errorHandler.handle(erro));
+
+    }
   }
 
 }

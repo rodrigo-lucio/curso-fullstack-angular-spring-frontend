@@ -16,51 +16,41 @@ export class NavbarComponent implements OnInit {
     private errrorHandle: ErrorHandlerService) { }
 
   display = false;
+  displaySide = false;
 
   items: MenuItem[];
+  itemsButtonUser: MenuItem[];
 
   ngOnInit() {
     this.items = [
-      {
-        label: 'Dashboard',
-        icon: 'pi pi-home',
-        routerLink: '/dashboard',
-        visible: this.auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')
-      },
+      this.configurarActionItemMenu(
+        'Dashboard', 'pi pi-home', '/dashboard',
+        this.auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')),
       {
         label: 'Lançamentos',
         icon: 'pi pi-chart-line',
         items: [
-          {
-            label: 'Incluir',
-            icon: 'pi pi-plus',
-            routerLink: '/lancamentos/novo',
-            visible: this.auth.temPermissao('ROLE_CADASTRAR_LANCAMENTO')
-          },
-          {
-            label: 'Consultar',
-            icon: 'pi pi-search',
-            routerLink: '/lancamentos',
-            visible: this.auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')
-          }
+          this.configurarActionItemMenu(
+            'Incluir', 'pi pi-plus', '/lancamentos/novo',
+            this.auth.temPermissao('ROLE_CADASTRAR_LANCAMENTO'))
+          ,
+          this.configurarActionItemMenu(
+            'Consultar', 'pi pi-search', '/lancamentos',
+            this.auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO'))
         ]
       },
       {
         label: 'Pessoas',
         icon: 'pi pi-users',
         items: [
-          {
-            label: 'Incluir',
-            icon: 'pi pi-plus',
-            routerLink: '/pessoas/novo',
-            visible: this.auth.temPermissao('ROLE_CADASTRAR_PESSOA')
-          },
-          {
-            label: 'Consultar',
-            icon: 'pi pi-search',
-            routerLink: '/pessoas',
-            visible: this.auth.temPermissao('ROLE_PESQUISAR_PESSOA')
-          }
+
+          this.configurarActionItemMenu(
+            'Incluir', 'pi pi-plus', '/pessoas/novo',
+            this.auth.temPermissao('ROLE_CADASTRAR_PESSOA'))
+          ,
+          this.configurarActionItemMenu(
+            'Consultar', 'pi pi-search', '/pessoas',
+            this.auth.temPermissao('ROLE_PESQUISAR_PESSOA'))
         ]
       },
       {
@@ -68,51 +58,62 @@ export class NavbarComponent implements OnInit {
         icon: 'pi pi-user',
         visible: this.auth.temPermissao('ROLE_PESQUISAR_USUARIO') || this.auth.temPermissao('ROLE_CADASTRAR_USUARIO'),
         items: [
-          {
-            label: 'Incluir',
-            icon: 'pi pi-plus',
-            routerLink: '/usuarios/novo',
-            visible: this.auth.temPermissao('ROLE_CADASTRAR_USUARIO')
-          },
-          {
-            label: 'Consultar',
-            icon: 'pi pi-search',
-            routerLink: '/usuarios',
-            visible: this.auth.temPermissao('ROLE_PESQUISAR_USUARIO')
-          }
+
+
+          this.configurarActionItemMenu(
+            'Incluir', 'pi pi-plus', '/usuarios/novo',
+            this.auth.temPermissao('ROLE_CADASTRAR_USUARIO')),
+
+          this.configurarActionItemMenu(
+            'Consultar', 'pi pi-search', '/usuarios',
+            this.auth.temPermissao('ROLE_PESQUISAR_USUARIO')),
         ]
       },
       {
         label: 'Relatórios',
         icon: 'pi pi-print',
         items: [
-          {
-            label: 'Lançamentos por Pessoa',
-            icon: 'pi pi-print',
-            routerLink: '/relatorios/lancamentos',
-            visible: this.auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')
-          }
+          this.configurarActionItemMenu(
+            'Lançamentos por Pessoa', 'pi pi-print', '/relatorios/lancamentos',
+            this.auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO'))
         ]
-      },
+      }
+    ];
+
+    this.itemsButtonUser = [
       {
         label: 'Alterar Senha',
         icon: 'pi pi-key',
         command: () => {
+          this.displaySide = false;
           this.formAlterarSenha();
         },
       },
       {
         label: 'Sair',
         icon: 'pi pi-sign-out ',
+        routerLink: null,
         command: () => {
           this.logout();
         },
       }
+
+
     ];
   }
 
   criarNovoAcessToken() {
     this.auth.obterNovoAccessToken();
+  }
+
+  configurarActionItemMenu(label: string, icon: string, routerlink: string, visible) {
+    return {
+      label: label,
+      icon: icon,
+      routerLink: routerlink,
+      visible: visible,
+      command: () => { this.displaySide = false; }
+    }
   }
 
   logout() {
@@ -131,5 +132,9 @@ export class NavbarComponent implements OnInit {
 
   formAlterarSenha() {
     this.display = true;
+  }
+
+  getPrimeiroNome() {
+    return this.auth.jwtPayload?.nome.substring(0, this.auth.jwtPayload?.nome.indexOf(' '));
   }
 }

@@ -106,12 +106,43 @@ export class PessoaService {
     return response;
   }
 
+  async buscaEstadoPorUf(uf: string): Promise<Estado> {
+
+    const response = await this.http.get<Estado>(
+      `${this.estadosUrl}/${uf}`)
+      .toPromise();
+
+    return response;
+
+  }
+
   async pesquisarCidades(estado): Promise<Cidade[]> {
 
     let params = new HttpParams();
     params = params.set('estado', estado);
 
     const response = await this.http.get<Cidade[]>(this.cidadesUrl, { params })
+      .toPromise();
+    return response;
+  }
+
+  adicionarCidade(cidade: Cidade): Promise<Cidade> {
+
+    //Evitar de atualizar o registro
+    cidade.codigo = 0;
+    return this.http.post<Cidade>(
+      this.cidadesUrl, cidade)
+      .toPromise();
+
+  }
+
+  async pesquisarCidade(nome: string, uf: string): Promise<Cidade[]> {
+
+    let params = new HttpParams();
+    params = params.set('nome', nome);
+    params = params.set('uf', uf);
+
+    const response = await this.http.get<Cidade[]>(`${this.cidadesUrl}/filtrar`, { params })
       .toPromise();
     return response;
   }
