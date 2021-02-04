@@ -135,6 +135,13 @@ export class NavbarComponent implements OnInit {
   }
 
   getPrimeiroNome() {
-    return this.auth.jwtPayload?.nome.substring(0, this.auth.jwtPayload?.nome.indexOf(' '));
+
+    let primeiroNome = this.auth.jwtPayload?.nome.substring(0, this.auth.jwtPayload?.nome.indexOf(' '));
+
+    if (primeiroNome.trim() === '') {
+      primeiroNome = this.auth.jwtPayload?.nome;
+    }
+
+    return primeiroNome;
   }
 }

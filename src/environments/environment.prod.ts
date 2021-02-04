@@ -1,7 +1,7 @@
-const url = 'result-app.herokuapp.com';
+const url = '18.234.65.57:8080';
 export const environment = {
   production: true,
-  apiUrl: `https://${url}`,
+  apiUrl: `http://${url}`,
   tokenWhitelistedDomains: [url],
-  tokenBlacklistedRoutes: [`https://${url}/oauth/token`]
+  tokenBlacklistedRoutes: [`http://${url}/oauth/token`]
 };
