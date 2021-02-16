@@ -11,8 +11,6 @@ import { PessoaService } from './../../pessoas/pessoa.service';
 import { CategoriaService } from './../../categorias/categoria.service';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 
-
-
 @Component({
   selector: 'app-lancamento-cadastro',
   templateUrl: './lancamento-cadastro.component.html',
@@ -31,7 +29,6 @@ export class LancamentoCadastroComponent implements OnInit {
 
   categorias = [];
   pessoas = [];
-  //lancamento = new Lancamento();
   urlUploadAnexo;
   formulario: FormGroup;
   uploadEmAndamento = false;
