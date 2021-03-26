@@ -16,7 +16,7 @@ Neste projeto foram utilizadas as seguintes tecnologias:
 
 - [Angular](https://angular.io/)
 - [Biblioteca PrimeNG](https://www.primefaces.org/primeng-5.2.7/)
-- [Deploy no AWS com EC2](https://aws.amazon.com/pt/ec2/) 
+- [Deploy na AWS com EC2](https://aws.amazon.com/pt/ec2/) 
 - [Docker](https://www.docker.com/)
 	- 03 containers: OpenJDK, PostgreSQL e Node
 
