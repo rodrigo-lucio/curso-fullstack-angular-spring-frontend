@@ -19,10 +19,6 @@ Neste projeto foram utilizadas as seguintes tecnologias:
 - [Deploy no AWS com EC2](https://aws.amazon.com/pt/ec2/) 
 - [Docker](https://www.docker.com/)
 	- 03 containers: OpenJDK, PostgreSQL e Node
-- [Clique aqui para uma demonstração](http://18.234.65.57:4200/login) 
-	- Usuário: demo@demo.com.br 
-	- Senha: demo
-	- Sinta-se a vontade 😃
 
 ## ▶️ Utilização
 
@@ -38,9 +34,12 @@ Login: admin@algamoney.com e senha: admin
 
 Obs: Este projeto fará automaticamente o controle de busca e renovação do token [JWT](https://jwt.io/).
 
+## 📱 Demonstração
 
-
-
+- [Clique aqui para uma demonstração](http://18.234.65.57:4200/login) 
+- Usuário: demo@demo.com.br 
+- Senha: demo
+- Sinta-se a vontade 😃
 
 
 
