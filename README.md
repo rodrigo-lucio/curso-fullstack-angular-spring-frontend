@@ -10,6 +10,13 @@ Utilizado [Angular CLI ](https://github.com/angular/angular-cli) versão 10.0.1.
 
 O repositório do back-end você encontra [aqui](https://github.com/rodrigo-lucio/curso-fullstack-angular-spring-backend).
 
+## 📱 Demonstração
+
+- [Clique aqui para uma demonstração](http://18.234.65.57:4200/login) 
+- Usuário: demo@demo.com.br 
+- Senha: demo
+- Sinta-se a vontade 😃
+
 ## :rocket: Tecnologias
 
 Neste projeto foram utilizadas as seguintes tecnologias:
@@ -34,12 +41,7 @@ Login: admin@algamoney.com e senha: admin
 
 Obs: Este projeto fará automaticamente o controle de busca e renovação do token [JWT](https://jwt.io/).
 
-## 📱 Demonstração
 
-- [Clique aqui para uma demonstração](http://18.234.65.57:4200/login) 
-- Usuário: demo@demo.com.br 
-- Senha: demo
-- Sinta-se a vontade 😃
 
 
 
