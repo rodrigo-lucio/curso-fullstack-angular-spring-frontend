@@ -16,7 +16,13 @@ Neste projeto foram utilizadas as seguintes tecnologias:
 
 - [Angular](https://angular.io/)
 - [Biblioteca PrimeNG](https://www.primefaces.org/primeng-5.2.7/)
-- Deploy no [Heroku](https://heroku.com/)
+- [Deploy no AWS com EC2](https://aws.amazon.com/pt/ec2/) 
+- [Docker](https://www.docker.com/)
+	- 03 containers: OpenJDK, PostgreSQL e Node
+- [Demonstração](http://18.234.65.57:4200/login) 
+	- Usuário: demo@demo.com.br 
+	- Senha: demo
+	- Sinta-se a vontade 😃
 
 ## ▶️ Utilização
 
