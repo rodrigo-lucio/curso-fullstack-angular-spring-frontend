@@ -19,7 +19,7 @@ Neste projeto foram utilizadas as seguintes tecnologias:
 - [Deploy no AWS com EC2](https://aws.amazon.com/pt/ec2/) 
 - [Docker](https://www.docker.com/)
 	- 03 containers: OpenJDK, PostgreSQL e Node
-- [Demonstração](http://18.234.65.57:4200/login) 
+- [Clique aqui para uma demonstração](http://18.234.65.57:4200/login) 
 	- Usuário: demo@demo.com.br 
 	- Senha: demo
 	- Sinta-se a vontade 😃
