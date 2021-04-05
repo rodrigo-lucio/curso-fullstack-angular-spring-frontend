@@ -15,7 +15,7 @@ O repositório do back-end você encontra [aqui](https://github.com/rodrigo-luci
 - [Clique aqui para uma demonstração](http://18.234.65.57:4200/login) 
 - Usuário: demo@demo.com.br 
 - Senha: demo
-- Sinta-se a vontade 😃
+- Sinta-se à vontade 😃
 
 ## :rocket: Tecnologias
 
