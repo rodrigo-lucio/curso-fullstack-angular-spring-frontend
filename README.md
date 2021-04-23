@@ -12,7 +12,7 @@ O repositório do back-end você encontra [aqui](https://github.com/rodrigo-luci
 
 ## 📱 Demonstração
 
-- [Clique aqui para uma demonstração](http://18.234.65.57:4200/login) 
+- [Clique aqui para uma demonstração](http://http://54.242.153.252/login) 
 - Usuário: demo@demo.com.br 
 - Senha: demo
 - Sinta-se à vontade 😃
@@ -23,7 +23,7 @@ Neste projeto foram utilizadas as seguintes tecnologias:
 
 - [Angular](https://angular.io/)
 - [Biblioteca PrimeNG](https://www.primefaces.org/primeng-5.2.7/)
-- [Deploy na AWS com EC2](https://aws.amazon.com/pt/ec2/) 
+- Deploy na AWS utilizando [EC2](https://aws.amazon.com/pt/ec2/) 
 - [Docker](https://www.docker.com/)
 	- 03 containers: OpenJDK, PostgreSQL e Nginx, conforme o arquivo [docker-compose.yml](https://github.com/rodrigo-lucio/curso-fullstack-angular-spring-frontend/blob/master/docker-compose.yml)
 
