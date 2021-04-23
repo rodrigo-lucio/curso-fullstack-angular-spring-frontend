@@ -12,7 +12,7 @@ O repositório do back-end você encontra [aqui](https://github.com/rodrigo-luci
 
 ## 📱 Demonstração
 
-- [Clique aqui para uma demonstração](http://http://54.242.153.252/login) 
+- [Clique aqui para uma demonstração](http://54.242.153.252/login) 
 - Usuário: demo@demo.com.br 
 - Senha: demo
 - Sinta-se à vontade 😃
