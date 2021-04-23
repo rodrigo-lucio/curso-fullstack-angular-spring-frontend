@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  banco-postgresql:
+    image: postgres:13
+    container_name: banco-postgresql
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=algamoneyapi
+    volumes:
+      - /var/lib/volumes_docker/postgres-algamoney:/var/lib/postgresql/data
+    networks:
+      - production-network
+
+  algamoney-api:
+    image: rodrigolucio/algamoney-api
+    container_name: algamoney-api
+    ports:
+      - 8080:8080
+    networks:
+      - production-network
+    depends_on:
+      - banco-postgresql
+    restart: on-failure
+
+  algamoney-ui:
+    image: rodrigolucio/algamoney-ui
+    container_name: algamoney-ui
+    ports:
+      - 80:80
+    networks:
+      - production-network
+    depends_on:
+      - algamoney-api
+
+networks:
+  production-network:
+    driver: bridge
