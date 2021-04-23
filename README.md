@@ -43,7 +43,7 @@ Obs: Este projeto fará automaticamente o controle de busca e renovação do tok
 
 ## :whale: Utilização com Docker
 
-As imagens estão publicadas em meu [Docker Hub](https://hub.docker.com/u/rodrigolucio), mas caso preferir, os arquivos de imagens também encontram-se nas na raiz dos repositórios.
+As imagens estão publicadas em meu [Docker Hub](https://hub.docker.com/u/rodrigolucio), mas caso preferir, os arquivos de imagens também encontram-se nas raízes dos repositórios.
 
 Com o Docker instalado, navegue até o diretório raiz deste repositório e execute o comando:
 ```
