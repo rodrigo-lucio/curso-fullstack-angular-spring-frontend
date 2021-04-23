@@ -25,7 +25,7 @@ Neste projeto foram utilizadas as seguintes tecnologias:
 - [Biblioteca PrimeNG](https://www.primefaces.org/primeng-5.2.7/)
 - [Deploy na AWS com EC2](https://aws.amazon.com/pt/ec2/) 
 - [Docker](https://www.docker.com/)
-	- 03 containers: OpenJDK, PostgreSQL e Node
+	- 03 containers: OpenJDK, PostgreSQL e Nginx, conforme o arquivo [docker-compose.yml](https://github.com/rodrigo-lucio/curso-fullstack-angular-spring-frontend/blob/master/docker-compose.yml)
 
 ## ▶️ Utilização
 
@@ -40,6 +40,15 @@ Com a API do Back-end iniciada, você poderá utilizar as seguintes credencias p
 Login: admin@algamoney.com e senha: admin
 
 Obs: Este projeto fará automaticamente o controle de busca e renovação do token [JWT](https://jwt.io/).
+
+## :whale: Utilização com Docker
+
+As imagens estão publicadas em meu [Docker Hub](https://hub.docker.com/u/rodrigolucio), mas caso preferir, os arquivos de imagens também encontram-se nas na raiz dos repositórios.
+Com o Docker instalado, navegue até o diretório raiz deste repositório e execute o comando:
+```
+$ docker-compose up
+```
+O projeto estará acessível em `http://localhost` e o back-end em `http://localhost:8080`, com as mesmas credencias citadas anteriormente. 
 
 
 
